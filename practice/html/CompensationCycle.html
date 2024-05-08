@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>보상주기</title>
+  <style>
+    header {
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      color: rgb(135, 136, 136);
+    }
+    label {
+      margin-right: 10px;
+    }
+    .subtitle {
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    body > div {
+      width: 1200px; 
+      height: 1200px;
+      margin-left: auto; 
+      margin-right: auto;
+      text-align: center;
+    }
+    body > div > div:nth-child(2) {
+      display: flex; 
+      justify-content: space-between;
+
+    }
+    body > div > div:nth-child(2) > div {
+      width: 550px;
+      border: 1px solid;
+      padding-bottom: 30px;
+    }
+    body > div > div:nth-child(3) {
+      display: flex;
+      height: 600px;
+      background-color: cadetblue;
+    }
+    body > div > div:nth-child(3) > div:nth-child(1) > div {
+      background-color: burlywood;
+      width: 300px;
+    }
+    body > div > div:nth-child(3) > div:nth-child(3) > div {
+      background-color: burlywood;
+      width: 300px;
+    }
+    body > div > div:nth-child(3) > div:nth-child(2) > div {
+      background-color: aquamarine;
+      width: 600px;
+    }
+    .checkbox {
+      display: flex; 
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- header -->
+  <header>
+    <h1>Compensation Cycle</h1> 
+  </header>
+  <!-- header, footer를 제외한 나머지 -->
+  <div> 
+    <!-- 보상주기에 대한 설명 컨테이너 -->
+    <div>
+      <p>
+        보상주기(Compensation Cycle)이란 스스로 어떤 것에 대한 목표를 설정하고 그 목표에 도달했을 경우 스스로에게 보상을 주는 것을 의미한다. 자기관리의 사고방식 중 하나로 생각할 수 있고, 효율적으로 목표에 도달하도록하는 자극제 역할이 될 수도 있다. 보상주기는 크게 두가지로 생각할 수 있다. 목표에 도달하는 시간을 기준으로 보상주기가 긴 것, 보상주기가 짧은 것이다. 
+      </p>
+      <p>
+        짧은 보상주기는 집중력을 높여주는 데에 도움을 준다. 그에 비해 긴 보상주기는 집중하는 데에 어려움이 따른다. 그래서 보상주기 동안의 행동들을 아무 생각없이 습관화를 시키는 것이 중요하다.
+      </p>
+    </div>
+    <!-- 보상주기 체크 컨테이너 -->
+    <div>
+      <!-- 긴 보상주기 섹션 -->
+      <div>
+        <!-- 긴 보상주기 제목 -->
+        <h1 class="subtitle">Long Compensation Cycle</h1>
+        <!-- 긴 보상주기 내용 -->
+        <div>
+          <p>
+            <strong>긴 보상주기</strong>에 해당하는 것을 체크해보세요 !
+          </p>
+          <!-- 긴 보상주기 체크박스 컨테이너 -->
+          <div class="checkbox">
+            <div>
+              <input type="checkbox" name="diet" checked/>
+              <label for="diet">다이어트</label>
+            </div>
+            <div>
+              <input type="checkbox" name="job" checked/>
+              <label for="job">직업 갖기</label>
+            </div>
+            <div>
+              <input type="checkbox" name="exam"/>
+              <label for="exam">중간/기말고사</label>
+            </div>
+            <div>
+              <input type="checkbox" name="cheating"/>
+              <label for="cheating">치팅데이</label>
+            </div>
+            <div>
+              <input type="checkbox" name="installment" checked/>
+              <label for="installment">적금</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 짧은 보상주기 섹션 -->
+      <div>
+        <!-- 짧은 보상주기 제목 -->
+        <h1 class="subtitle">Short Compensation Cycle</h1>
+        <!-- 짧은 보상주기 내용 -->
+        <div>
+          <p>
+            <strong>짧은 보상주기</strong>에 해당하는 것을 체크해보세요 !
+          </p>
+          <!-- 짧은 보상주기 체크박스 컨테이너  -->
+          <div class="checkbox">
+            <div>
+              <input type="checkbox" name="diet"/>
+              <label for="diet">다이어트</label>
+            </div>
+            <div>
+              <input type="checkbox" name="job"/>
+              <label for="job">직업 갖기</label>
+            </div>
+            <div>
+              <input type="checkbox" name="exam" checked/>
+              <label for="exam">중간/기말고사</label>
+            </div>
+            <div>
+              <input type="checkbox" name="cheating" checked/>
+              <label for="cheating">치팅데이</label>
+            </div>
+            <div>
+              <input type="checkbox" name="installment"/>
+              <label for="installment">적금</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 사이드 섹션 -->
+    <div>
+      <div>
+        <div>
+          <h1 class="subtitle">안녕</h1>
+          <p>
+            저쩌구 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam ut, necessitatibus minus dignissimos expedita a quod id debitis magnam qui fugiat atque sequi modi molestiae veniam, beatae unde, minima laboriosam! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus incidunt amet voluptatibus sit, veniam libero rem eum quo omnis a sapiente repudiandae culpa placeat, provident sint minima modi sed explicabo!
+          </p>
+        </div>
+        <div>
+          <h1 class="subtitle">반가워</h1>
+          <p>어쩌구저쩌구</p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h1 class="subtitle">헬로</h1>
+          <p>Hello</p>
+        </div>
+        <div>
+          <h1 class="subtitle">하이</h1>
+          <p>
+            Hi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam odio nisi reprehenderit inventore illo? Consectetur dicta quidem consequuntur sint illo temporibus aut, officiis pariatur excepturi nemo! Voluptatibus, blanditiis. Magni, quos.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h1 class="subtitle">안녕</h1>
+          <p>저쩌구</p>
+        </div>
+        <div>
+          <h1 class="subtitle">반가워</h1>
+          <p>
+            어쩌구저쩌구 Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti tenetur magni repellendus deserunt odit dolorem dolor recusandae, provident veniam ratione autem saepe optio aliquam pariatur consequuntur non tempora at rerum! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quas, tenetur, expedita atque dicta non amet eius laborum ducimus, necessitatibus numquam harum deserunt a. Eum eius tempore neque iusto repellendus.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <footer>그린컴퓨터아트학원 KDT IaaS 최유진</footer>
+</body>
+</html>

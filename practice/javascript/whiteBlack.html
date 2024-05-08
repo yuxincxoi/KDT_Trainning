@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div id="white"></div>
+    <div id="black"></div>
+  </div>
+  <script>
+    let root = document.getElementById('root');
+    let white = document.getElementById('white');
+    let black = document.getElementById('black');
+    console.log(root, white, black);
+
+    white.style.width = '300px';
+    white.style.height = '300px';
+    white.style.backgroundColor = '#f0f0f0';
+    white.innerText = 'White';
+
+    black.style.width = '300px';
+    black.style.height = '300px';
+    black.style.backgroundColor = '#000000';
+    black.style.color = '#ffffff';
+    black.innerText = 'Dark';
+    black.style.display = 'none';
+
+    // white를 클릭하면 사라지게 해줘.
+    function whiteControl() {
+      white.style.display = 'none';
+      black.style.display = 'block';
+    }
+    white.addEventListener('click', whiteControl);
+    
+    // black을 클릭하면 white가 나타나게 해줘.
+    function blackControl() {
+      white.style.display = 'block';
+      black.style.display = 'none';
+    }
+    black.addEventListener('click', blackControl);
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <h1 onclick="first()">최유진</h1>
+    <h1 onclick="second()">KDT</h1>
+    <h1 onclick="hello()" style="background-color: red; color: white;">정답은 ?</h1>
+
+  </div>
+  <script>
+    // function first() {
+    //   let root = document.getElementById('root').children[0];
+    //   console.log(root.innerText);  
+    //   root.innerText = '최유똥';
+    //   root.style.color = 'yellowgreen';
+    //   root.style.fontSize = '20px';
+    // }
+    // function second() {
+    //   let kdt = document.getElementById('root').children[1];
+    //   console.log(kdt.innerText);
+    //   kdt.style.color = 'yellow';
+    // }
+
+
+
+    // 기본 형태
+    function plus(a, b) {
+      return a + b;
+    }
+
+
+    // 2+2*2 = 6
+    function a(first, second, third) {
+      // 함수 a는 계산기능이 없음. 콘솔에 찍는 기능만 있음
+      console.log(first+second*third);
+    }
+    a(2, 2, 2);
+
+    function b(first, second, third) {
+      // 함수 b는 계산기능이 있음. 콘솔에 찍는 기능은 없음
+      return first+second*third;
+    }
+    console.log(b(2, 2, 2));
+
+
+
+
+
+    function c(first, second, third) {
+      if(first==1) {
+        return first+second*third;
+      } else {
+        return first*second*third;
+      }
+    }
+    console.log(c(1, 2, 2));
+    console.log(c(2, 2, 2));
+
+    
+    function hello() {
+      let root = document.getElementById('root').children[2];
+      if(root.style.backgroundColor=='red') {
+        root.style.backgroundColor = 'yellow';
+      } else if(root.style.backgroundColor=='yellow') {
+        root.style.backgroundColor = 'red';
+      }
+      
+    }
+  </script>
+</body>
+</html>

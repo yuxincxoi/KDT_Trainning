@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+      document.body.style.margin = 0;
+      document.body.style.padding = 0;
+      document.body.style.backgroundColor = '#D9D9D9';
+
+      // elements
+      let container = document.getElementById('container');
+      let item = document.createElement('div');
+      let button = document.createElement('button');
+
+      // item opacity
+      let opacity = 1;
+      
+      container.append(item, button);
+      
+      // container style
+      container.style.width = '100vw';
+      container.style.height = '100vh';
+      
+      // item style
+      item.style.position = 'absolute';
+      item.style.zIndex = '1';
+      item.style.backgroundColor = '#B0B0B0';
+      item.style.width = '100vw';
+      item.style.height = '507px';
+      item.style.opacity = opacity;
+      
+      // button style
+      button.style.position = 'absolute';
+      button.style.zIndex ='2';
+      button.style.width = '80px';
+      button.style.height = '80px';
+      button.style.backgroundColor = '#464646';
+      button.style.margin = '50px';
+      
+      // click event - item fade-in/out
+      button.addEventListener('click', () => {
+        if(item.style.opacity <= 0) {   // item fade-in
+          // item.style.display = 'block';
+          let fadeIn = setInterval(() => {
+            opacity += 0.1;
+            item.style.opacity = `${opacity}`;
+            
+            if(opacity >= 1) {
+              clearInterval(fadeIn);
+              opacity = 1;
+            }
+            // console.log(opacity);
+          }, 20)        
+        } else if(item.style.opacity >= '1') {    // item fade-out
+          // item.style.display = 'none';
+          let fadeOut = setInterval(() => {
+            opacity -= 0.1;
+            item.style.opacity = `${opacity}`;
+            
+            if(opacity <= 0) {
+              clearInterval(fadeOut);
+              opacity = 0;
+            }
+            // console.log(opacity);
+          }, 20)
+        }
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div>최유진</div>
+    <div>한철수</div>
+    <div>김훈이</div>
+  </div>
+  <script>
+    let root = window.document.getElementById('root');
+
+    console.log(root);
+    console.dir(root);
+
+    root.id='container';
+    console.dir(root);
+
+
+
+    root.children[0].innerText='최유똥';
+
+    for(var i=0; i<3; i++) {
+      var abc = ['a', 'b', 'c'];
+
+      root.children[i].innerText=abc[i]; 
+    }
+
+
+    
+  // 강사님의 접근 방법
+  console.dir(root.children);
+  console.dir(root.children[0]);
+  console.dir(root.children[0].innerHTML);
+  root.children[0].innerHTML='최유진';
+
+  let arr = ['d', 'e', 'f'];
+  for(var i=0; i<3; i++) {
+    if(arr[i]==='f') {
+      arr[i] = 'a';
+    }
+    root.children[i].innerText=arr[i];
+    
+  }
+
+  </script>
+</body>
+</html>

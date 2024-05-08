@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function addItem(array, item, index) {
+        let newArray = [];
+
+        function inner(currentIndex) {
+          return currentIndex > index;
+        }
+
+        for (let i = 0; i <= array.length; i++) {
+          if (i === index) {
+            newArray[i] = item;
+          } else if (inner(i) === true) {
+            newArray[i] = array[i - 1];
+          } else {
+            newArray[i] = array[i];
+          }
+        }
+
+        return newArray;
+      }
+
+      let planets = ["a", "b", "c"];
+      // 배열 생성하자
+      let updatePlanet = addItem(planets, "new !", 2);
+      // 함수를 호출하는데, 얘를 변수에 담네? 그럼 이건 값인가?
+
+      for (let i = 0; i < updatePlanet.length; i++) {
+        console.log(updatePlanet[i]);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading . . .</title>
+</head>
+<body>
+  <script>
+    const root = document.createElement('div');
+    const box = document.createElement('div');
+
+    document.body.append(root);
+    root.append(box);
+
+    box.style.width = '20px';
+    box.style.height = '20px';
+    box.style.backgroundColor = 'yellowgreen';
+
+    const right = setInterval(() => {
+      box.style.transform = 'translate(30px, 0)';
+      box.style.transitionDuration = '1s';
+      // box.style.transform = 'translate(30px)';
+    }, 1000)
+    // const down = setInterval(() => {
+    //   box.style.transform = 'translate(0, 30px)';
+    // }, 1000)
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+@font-face {
+  font-family: 'PartialSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TTLaundryGothicB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Freesentation-9Black';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 80px;
+  text-align: center;
+  margin: 50px;
+  font-family: 'PartialSansKR-Regular';
+  font-weight: 300;
+}
+h2 {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  font-family: 'Freesentation-9Black';
+}
+h3 {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'TTLaundryGothicB';
+}
+h4, h6 {
+  font-family: 'Freesentation-9Black';
+  font-size: 20px;
+}
+li {
+  font-family: 'SUITE-Regular';
+  font-weight:100;
+  font-size: 20px;
+}
+
+/* number, character, string */
+#container1 {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 150px;
+}
+#container1 > div {
+  width: 25vw;
+  height: 200px;
+  border-radius: 30px;
+  border: 1px solid black;
+  box-shadow: 3px 8px 8px 3px gray;
+  line-height: 200px;
+}
+
+/* boolean */
+#container2 {
+  margin-bottom: 200px;
+  height: 500px;
+}
+#weather {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+#weather > img {
+  width: 150px;
+  height: 150px;
+}
+#bool {
+  width: 180px;
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 30px;
+  background-color: rgb(241, 206, 46);
+
+}
+
+/* array */
+#container3 {
+  margin-bottom: 200px;
+}
+#race {
+  display: flex;
+  justify-content: center;
+}
+#race > div {
+  display: flex;
+}
+#race > div:nth-child(3) {
+  display: block;
+}
+#arryImg {
+  width: 80px;
+  height: 80px;
+  padding-top: 70px;
+}
+#race > div:nth-child(2) > img {
+  width: 150px;
+  height: 150px;
+  margin-left: 5vw;
+  margin-right: 10vw;
+  padding-top: 0;
+}
+#race > div:nth-child(3) > div {
+  display: flex;
+  justify-content: space-between;
+}
+#race > div:nth-child(3) > div > h6 {
+  width: 80px;
+  text-align: center;
+}
+#race > div:nth-child(3) > div:nth-child(2) {
+  width: 300px;
+  justify-content: space-between;
+}
+#race > div:nth-child(3) > div:nth-child(2) > img {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#down {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+#down > img {
+  width: 80px;
+  height: 80px; 
+}
+
+#arryBox {
+  display: flex;
+  justify-content: center;
+}
+#arryBox > img {
+  width: 100px;
+  height: 100px;
+}
+
+/* object */
+#container4 {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+  margin-bottom: 200px;
+}
+#container4 > ul {
+  padding-left: 150px;
+  padding-right: 80px;
+  padding-top: 20px;
+}
+#container4 > img:nth-child(2) {
+  width: 60px;
+  height: 60px;
+  padding-top: 80px;
+}
+#container4 > img:nth-child(3) {
+  padding-left: 80px;
+}
+
+
+/* function */
+#container5 > h4 {
+  width: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+#container5 > div {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 200px;
+}
+#container5 > div > div {
+  display: flex;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 30px;
+}
+#container5 > div > div > img {
+  width: 80px;
+  height: 80px;
+}
+#container5 > div > div > img:nth-child(2) {
+  width: 20px;
+  height: 20px;
+  padding-top: 30px;
+}
+#container5 > div > div > img:nth-child(4) {
+  width: 20px;
+  height: 20px;
+  padding-top: 30px;
+}
+#container5 > div > img:nth-child(2) {
+  width: 60px;
+  height: 60px;
+  padding-top: 50px;
+}
+#container5 > div > img:nth-child(3) {
+  padding-left: 30px;
+}

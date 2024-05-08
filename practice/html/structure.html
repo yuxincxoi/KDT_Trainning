@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 각각의 섹션 */
+    div > div {
+        margin: 10px;
+      }
+      /* 섹션 내용 */
+      div > div > p:nth-child(2) {
+        text-align: center;
+      }
+
+
+    /* PC */
+    @media screen and (min-width:1024px) {
+      div > div > p:nth-child(1) {
+        font-size: xx-large;
+        font-weight: bold;
+        text-align: center;
+      }
+      /* 섹션 전체 */
+      body > div {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      nav {
+        display: flex;
+        border-bottom: 1px solid black;
+        padding: 15px;
+      }
+      /* 메뉴 아이콘 */
+      nav > div:nth-child(2) {
+        display: none;
+      }
+      /* 메뉴 */
+      nav > div:nth-child(3) > p {
+        float: right;
+        margin-left: 50px;
+      }
+      nav > div:nth-child(3) {
+        margin-left: auto;
+      }
+    }
+
+
+    /* 테블릿 가로, 세로 */
+    @media screen and (min-width:768px) and (max-width:1023px) {
+      /* 섹션 제목 */
+      div > div > p:nth-child(1) {
+        font-size: x-large;
+        font-weight: bold;
+        text-align: center;
+      }
+      /* 섹션 전체 */
+      body > div {
+        width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      nav {
+        display: flex;
+        border-bottom: 1px solid black;
+        padding: 15px;
+      }
+      /* 메뉴 아이콘 */
+      nav > div:nth-child(2) {
+        display: none;
+      }
+      /* 메뉴 */
+      nav > div:nth-child(3) > p {
+        float: right;
+        margin-left: 50px;
+      }
+      nav > div:nth-child(3) {
+        margin-left: auto;
+      }
+    }
+
+
+    /* 모바일 가로, 세로 */
+    @media screen and (max-width:767px) {
+      /* 섹션 제목 */
+      div > div > p:nth-child(1) {
+        font-size: large;
+        font-weight: bold;
+        text-align: center;
+      }
+      /* 섹션 전체 */
+      body > div {
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      nav {
+        display: flex;
+        border-bottom: 1px solid black;
+        padding: 15px;
+      }
+      /* 메뉴 아이콘 */
+      nav > div:nth-child(2) {
+        margin-left: auto;
+      }
+      /* 메뉴 */
+      nav > div:nth-child(3) > p {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div>
+      <img src="https://cdn-icons-png.flaticon.com/128/14112/14112863.png" class="logo" alt="로고" style="width: 50px; height: 50px;">
+    </div>
+    <div>
+      <img src="https://cdn-icons-png.flaticon.com/128/2976/2976215.png" class="menu" alt="메뉴" style="width: 44px; height: 44px;">
+    </div>
+    <div>
+      <p>3</p>
+      <p>2</p>
+      <p>1</p>
+    </div>
+  </nav>
+  <div>
+    <div>
+      <p>구조화 된 문제 VS 비구조화 된 문제</p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, deleniti veniam! Quia fuga eaque unde quaerat dignissimos, qui laboriosam porro similique, aliquid earum hic reprehenderit aperiam nisi culpa aut? Quo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nam est culpa corporis. Nostrum eaque dolores saepe, voluptatum voluptate omnis, nam quasi molestias aliquid recusandae quisquam ratione minus enim cumque! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias porro neque praesentium temporibus repudiandae nihil iure, qui rem provident minima natus tempore ex eaque sequi ea quas delectus! Sint, omnis?
+      </p>
+    </div>
+    <div>
+      <p>나만의 김치볶음밥 레시피(feat. 구조화된 문제)</p>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias exercitationem rem beatae quasi aspernatur dolorum sed porro, deserunt officiis commodi inventore vero quidem dicta voluptatibus voluptates voluptate repellendus? Natus, laborum.
+      </p>
+    </div>
+    <div>
+      <p>행복한 가정 만들기(feat. 비구조화된 문제)</p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quis in magnam rerum ut modi nisi hic sequi quo minus at repellat adipisci, reprehenderit eum ducimus consequuntur? Facilis, voluptatum corporis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, eos explicabo? In, recusandae officiis iste accusantium aperiam odio corrupti earum amet, quasi soluta vero quaerat distinctio reprehenderit eaque voluptas quidem!
+      </p>
+    </div>
+  </div>
+</body>
+</html>

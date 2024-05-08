@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var names = [
+      ["구", "하", "림"],
+      ["김", "보", "미"],
+      ["김", "수", "현"],
+      ["김", "정", "수"],
+      ["문", "혜", "림"],
+      ["배", "성", "빈"],
+      ["백", "지", "원"],
+      ["송", "이", "현"],
+      ["신", "지", "윤"],
+      ["유", "으", "뜸"],
+      ["유", "호", "영"],
+      ["이", "연", "승"],
+      ["이", "재", "영"],
+      ["이", "종", "수"],
+      ["임", "유", "진"],
+      ["정", "호", "연"],
+      ["조", "우", "식"],
+      ["조", "자", "연"],
+      ["최", "유", "진"],
+      ["황", "재", "민"]
+    ];
+
+    for(var j = 0; j < names.length; j++) {
+      for(var i = 0; i < 3; i++) {
+        var myName = names[j][i];
+        var fullName;
+
+        if(i==0) {
+          fullName = myName;
+        } else {
+          fullName = fullName + myName;
+        }
+      }
+
+      if(fullName=='최유진') {
+        console.log(fullName);
+      }
+    }
+  </script>
+</body>
+</html>

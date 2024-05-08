@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. 숫자 2. 문자 3. 불린 4. 객체 5. 배열 6. 함수
+
+    var num1 = 10;
+    var num2 = 18;
+    var name1 = '최';
+    var name2 = '유진';
+    var itsMe = {
+      name: name1+name2,
+      age: num1+num2,
+    }
+    var array = [itsMe.name,"은 ",itsMe.age,"살 이다."];
+
+    guess();
+
+    function guess() {
+      window.console.log(array);
+
+      if (num1+num2 != 28) {
+        window.console.log("사실은 거짓말!");
+      } else {
+        window.console.log("헉 어떻게 알았지?");
+      }
+    }
+  </script>
+</body>
+</html>

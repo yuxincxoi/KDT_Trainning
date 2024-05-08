@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subejct-2 최유진</title>
+  <script src="./basic-data.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    let rootStyle = {};
+    let rowStyle = {};
+    let studentStyle = {};
+
+    rootStyle.width = '100vw';
+    rootStyle.height = 'auto';
+    rootStyle.minHeight = '100vh';
+    rootStyle.margin = '2vw auto';
+
+    rowStyle.display = 'flex';
+    rowStyle.gap = '1vw';
+
+    studentStyle.width = '20%';
+    studentStyle.height = '150px';
+    studentStyle.backgroundColor = '#f0f0f0';
+    studentStyle.border = '1px solid #ccc';
+    studentStyle.padding = '1vw';
+
+
+
+    let root = document.getElementById('root');
+    root.style.display = 'grid';
+    root.style.gridTemplateColumns = 'repeat(5, 1fr)';
+    root.style.gridTemplateRows= 'repeat(4, 1fr)';
+    root.style.gap = rowStyle.gap;
+    root.style.gridAutoRows = 'minmax(150px, auto)';
+
+    root.style.width = rootStyle.width;
+    root.style.height = rootStyle.height;
+    root.style.minHeight = rootStyle.minHeight;
+    root.style.margin = rootStyle.margin;
+
+    for(i=0; i<4; i++) {
+      let row = document.createElement('div');
+      row.id = 'row';
+      root.appendChild(row);
+
+      for(j=0; j<5; j++) {
+        let student = document.createElement('div');
+        student.id = 'student';
+
+        row.appendChild(student);
+
+        
+        if(i==1) {
+          student.innerText = `${names[j+5]}`;
+        } else if(i==2) {
+          student.innerText = `${names[j+10]}`;
+        } else if(i==3) {
+          student.innerText = `${names[j+15]}`;
+        } else {
+          student.innerText = `${names[j]}`;
+        }
+
+        
+        // row.style.gap = rowStyle.gap;
+        // row.style.display = rowStyle.display;
+        // student.style.width = studentStyle.width;
+        // student.style.height = studentStyle.height;
+        student.style.backgroundColor = studentStyle.backgroundColor;
+        student.style.border = studentStyle.border;
+        student.style.padding = studentStyle.padding;
+        
+
+      }
+    }
+      
+  </script>
+</body>
+</html>
