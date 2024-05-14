@@ -1,0 +1,12 @@
+{
+  "name": "subject-4",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yujin Choi",
+  "license": "ISC",
+  "description": "백엔드프로그래밍기본(Node.js&Python)",
+  "type": "module"
+}

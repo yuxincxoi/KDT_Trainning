@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+#nav {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#nav > a {
+  width: 180px;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  line-height: 50px;
+  text-decoration: none;
+  color: black;
+}
+
+#home {
+  background-color: #d9d9d9;
+}
+
+#dataType {
+  background-color: #bdde86;
+}
+
+#objAry {
+  background-color: #86dea9;
+}
+
+#func {
+  background-color: #86a9de;
+}
+
+#ifor {
+  background-color: #ad86de;
+}
+
+#indexMain {
+  background-color: #d9d9d9;
+  height: 600px;
+
+  line-height: 500px;
+  text-align: center;
+  font-weight: 400px;
+  font-size: 32px;
+}
+
+#dataTypeMain {
+  background-color: #bdde86;
+  height: 600px;
+
+  line-height: 500px;
+  text-align: center;
+  font-weight: 400px;
+  font-size: 32px;
+}
+
+#objAryMain {
+  background-color: #86dea9;
+  height: 600px;
+
+  line-height: 500px;
+  text-align: center;
+  font-weight: 400px;
+  font-size: 32px;
+}
+
+#funcMain {
+  background-color: #86a9de;
+  height: 600px;
+
+  line-height: 500px;
+  text-align: center;
+  font-weight: 400px;
+  font-size: 32px;
+}
+
+#iforMain {
+  background-color: #ad86de;
+  height: 600px;
+
+  line-height: 500px;
+  text-align: center;
+  font-weight: 400px;
+  font-size: 32px;
+}
