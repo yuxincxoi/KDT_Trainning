@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <form action="/test" method="get">
+        <div>
+          <label for="name">나의 이름</label>
+          <div>
+            <input
+              type="text"
+              name="name"
+              placeholder="나의 이름을 작성하세요."
+              id="name"
+            />
+            <div id="nameValidation" class="validationBox"></div>
+          </div>
+        </div>
+        <div>
+          <label for="password">비밀번호</label>
+          <div>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="정자이름과 핸드폰 뒷자리 4자리를 작성해주세요."
+            />
+            <div id="passwordValidation" class="validationBox"></div>
+          </div>
+        </div>
+        <div>
+          <label for="passwordCheck">비밀번호 확인</label>
+          <div>
+            <input
+              type="password"
+              name="passwordCheck"
+              id="passwordCheck"
+              placeholder="위 비밀번호 입력과 동일하게 다시한번 작성해주세요."
+            />
+            <div id="passwordCheckValidation" class="validationBox"></div>
+          </div>
+        </div>
+        <div>
+          <label for="email">이메일 주소</label>
+          <div>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="이메일의 주소 양식에 맞게 작성해주세요."
+            />
+            <div id="emailValidation" class="validationBox"></div>
+          </div>
+        </div>
+        <div>
+          <label for="phoneNum">핸드폰 번호</label>
+          <div>
+            <input
+              type="tel"
+              name="phoneNum"
+              id="phoneNum"
+              placeholder="'-' 을 포함한 핸드폰 번호를 작성해주세요."
+            />
+            <div id="phoneNumValidation" class="validationBox"></div>
+          </div>
+        </div>
+        <div>
+          <label for="checkAllValidation">작성 완료</label>
+          <div id="checkAllValidation">
+            아직 모든 입력란이 유효하지 않습니다.
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="index.js" type="module"></script>
+  </body>
+</html>
