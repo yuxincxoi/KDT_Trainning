@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+#timeBox {
+  height: 100vh;
+  width: 100px;
+}
+
+#schedule {
+  /* background-color: aquamarine; */
+  height: 100vh;
+  width: 800px;
+}
+
+#detail {
+  /* background-color: antiquewhite; */
+  height: 100vh;
+  width: 800px;
+  display: flex;
+}
+
+#createBtn {
+  background-color: blue;
+  width: 30px;
+  height: 30px;
+}
+
+#saveBtn {
+  background-color: blueviolet;
+  width: 30px;
+  height: 30px;
+}
+
+#inputBox {
+  /* background-color: blueviolet; */
+  width: 770px;
+  height: 100vh;
+}
