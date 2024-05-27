@@ -72,35 +72,36 @@ const server = http.createServer((req, res) => {
               res.end("서버 자체 에러");
               return;
             }
-            // res.writeHead(200, {
-            //   "Content-Type": "application/json; charset=utf-8",
-            // });
             res.writeHead(200, {
-              "Content-Type": "text/html; charset=utf-8",
+              "Content-Type": "application/json; charset=utf-8",
             });
-            fs.readFile(
-              path.join(__dirname, "public/index.html"),
-              "utf8",
-              (err, data) => {
-                if (err) {
-                  console.log(err);
-                }
-                res.end(data);
-              }
-            );
-            fs.readFile(
-              path.join(__dirname, "application/json"),
-              "utf8",
-              (err, data) => {
-                if (err) {
-                  console.log(err);
-                }
-                res.end(data);
-              }
-            );
-            // let jsonResponse = JSON.stringify({
-            //   message: "데이터가 성공적으로 저장됨",
+            // res.writeHead(200, {
+            //   "Content-Type": "text/html; charset=utf-8",
             // });
+            // fs.readFile(
+            //   path.join(__dirname, "public/index.html"),
+            //   "utf8",
+            //   (err, data) => {
+            //     if (err) {
+            //       console.log(err);
+            //     }
+            //     res.end(data);
+            //   }
+            // );
+            // fs.readFile(
+            //   path.join(__dirname, "application/json"),
+            //   "utf8",
+            //   (err, data) => {
+            //     if (err) {
+            //       console.log(err);
+            //     }
+            //     res.end(data);
+            //   }
+            // );
+            let jsonResponse = JSON.stringify({
+              message: "데이터가 성공적으로 저장됨",
+            });
+            res.end(jsonResponse);
           }
         );
       });
