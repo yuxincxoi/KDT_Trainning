@@ -43,15 +43,25 @@ const server = http.createServer((req, res) => {
   } else if (req.method === "POST") {
     if (req.url === "/submit") {
       let body = "";
+
+      // 요청을 받으면 실행
       req.on("data", (chunk) => {
         body += chunk.toString();
       });
+      // req.on("data", (data) => {
+      //   body += data;
+      // });
+
+      // 데이터를 다 받았을 때(수신완료) 실행
       req.on("end", () => {
         const parsedData = new URLSearchParams(body);
         const title = parsedData.get("title");
         const time = parsedData.get("time");
         const place = parsedData.get("place");
         const memo = parsedData.get("memo");
+        // const parsedData = JSON.parse(body);
+        // const title = parsedData.title;
+        // ...
 
         const jsonData = {
           title: title,
@@ -73,20 +83,14 @@ const server = http.createServer((req, res) => {
               return;
             }
 
-            let data = JSON.parse(fs.readFileSync("./data.json"));
-
             res.writeHead(200, {
-              "Content-Type": "application/json; charset=utf-8",
+              "Content-Type": "text/javascript; charset=utf-8",
             });
-
-            res.write(JSON.stringify(data.title));
-
-            // module.exports = data;
+            res.write(JSON.stringify({ message: "안녕" }));
+            res.end();
 
             // console.log(typeof data); // object
             // console.log(typeof JSON.stringify(data)); // string
-
-            res.end();
           }
         );
       });
