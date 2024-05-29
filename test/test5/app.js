@@ -100,14 +100,64 @@ const server = http.createServer((req, res) => {
             res.end("서버 자체 에러");
             return;
           }
-          res.writeHead(200, {
-            "Content-Type": "application/json; charset=utf-8",
-          });
-          res.end();
-          // let data = JSON.parse(fs.readFileSync("./data.json"));
-          // console.log(data);
+          // res.writeHead(200, {
+          //   "Content-Type": "application/json; charset=utf-8",
+          // });
+          let data = JSON.parse(fs.readFileSync("./data.json"));
           console.log("json 데이터를 읽었다 !");
         });
+
+        // * index 다시 생성
+        fs.writeFile(
+          path.join(__dirname, "public/index.html"),
+          `<!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Document</title>
+              <link rel="stylesheet" href="style.css" />
+            </head>
+            <body>
+              <div id="root">
+                <div id="detail">
+                  <div id="createBtn"></div>
+                  <div id="scheduleContainer">
+                    <div id="timeBox"></div>
+                    <div id="contents">
+                      <div id="timeLine"></div>
+                      <form id="inputBox"></form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script src="script.js"></script>
+            </body>
+          </html>`,
+          (err, data) => {
+            if (err) {
+              res.writeHead(500, { "Content-Type": "text/plain" });
+              res.end("500 code는 서버 자체의 에러");
+              return;
+            }
+            console.log("index 다시 생성 !");
+
+            // * index 다시 읽기
+            fs.readFile(path.join(__dirname, "public/index.html"), (err) => {
+              if (err) {
+                res.writeHead(500, { "Content-Type": "text/plain" });
+                res.end("500 code는 서버 자체의 에러");
+                return;
+              }
+              res.writeHead(200, {
+                "Content-Type": "text/html; charset=utf-8",
+              });
+              console.log("index 다시 읽기 !");
+              res.end(data);
+            });
+          }
+        );
+
         // res.writeHead(200, {
         //   "Content-Type": "application/json; charset=utf-8",
         // });
