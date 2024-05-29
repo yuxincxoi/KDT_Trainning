@@ -54,6 +54,7 @@ const server = http.createServer((req, res) => {
 
       // 데이터를 다 받았을 때(수신완료) 실행
       req.on("end", () => {
+        // * url body에 담긴 객체 parse하기
         const parsedData = new URLSearchParams(body);
         const title = parsedData.get("title");
         const time = parsedData.get("time");
@@ -63,6 +64,7 @@ const server = http.createServer((req, res) => {
         // const title = parsedData.title;
         // ...
 
+        // * JSON 형식으로 담기 위한 변수
         const jsonData = {
           title: title,
           time: time,
@@ -70,7 +72,10 @@ const server = http.createServer((req, res) => {
           memo: memo,
         };
 
+        // * JavaScript 객체를 JSON으로 변환시킨 변수
         const jsonDataString = JSON.stringify(jsonData, null, 2);
+
+        // * 입력한 데이터를 JSON 형식의 파일로 생성
         fs.writeFile(
           path.join(__dirname, "data.json"),
           jsonDataString,
@@ -83,14 +88,17 @@ const server = http.createServer((req, res) => {
               return;
             }
 
+            // * JSON 파일 parse하여 읽기
+            // fs.readFileSync("./data.json");
+            let data = JSON.parse(fs.readFileSync("./data.json"));
             res.writeHead(200, {
-              "Content-Type": "text/javascript; charset=utf-8",
+              "Content-Type": "application/json; charset=utf-8",
             });
-            res.write(JSON.stringify({ message: "안녕" }));
+            res.write(JSON.stringify({ message: "전송 완료" }));
             res.end();
 
-            // console.log(typeof data); // object
-            // console.log(typeof JSON.stringify(data)); // string
+            console.log(typeof data.title);
+            console.log(data.title);
           }
         );
       });
@@ -102,6 +110,104 @@ const server = http.createServer((req, res) => {
     res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     res.end("404 code는 페이지를 찾을 수 없음");
   }
+
+  // !
+  // let folderData = [];
+
+  // let liTag = "";
+
+  // fs.readdir(
+  //   path.join(__dirname, "public", "writeFile"),
+  //   "utf8",
+  //   (err, data) => {
+  //     if (err) {
+  //       console.error("Error : ", err);
+  //     }
+  //     folderData = data;
+  //     for (let i = 0; i < folderData.length; i++) {
+  //       if (folderData[i].includes(".html")) {
+  //         folderData[i] = folderData[i].split(".html")[0];
+  //         liTag += `<li><a href="${folderData[i]}.html">${folderData[i]}</a></li>`;
+  //       }
+  //     }
+  //   }
+  // );
+
+  // const server = http.createServer((req, res) => {
+  // let url = req.url;
+  // let filePath = fileUtills.getFilepath(url);
+  // let ext = fileUtills.getExtention(filePath);
+
+  // let contentType = fileUtills.getContentType(ext);
+  // if (req.method === "GET") {
+  //   if (req.url === url) {
+  //     fs.readFile(filePath, (err, data) => {
+  //       if (err) {
+  //         connectErr(res);
+  //         return err;
+  //       }
+  //       res.statusCode = 200;
+  //       res.setHeader("Content-Type", contentType);
+  //       res.write(data);
+  //       res.end();
+  //     });
+  //   } else if (req.url === "/favicon.ico") {
+  //     return;
+  //   } else {
+  //     notFound(res);
+  //   }
+  // } else if (req.method === "POST") {
+  //   if (req.url === "/create") {
+  //     let body = "";
+  //     req.on("data", (chunk) => {
+  //       body += chunk.toString();
+  //     });
+  //     req.on("end", () => {
+  //       const parsedData = qs.parse(body);
+  //       const title = parsedData.title;
+  //       const content = parsedData.content;
+  //       let convertData = template(title, content);
+
+  //       let nowDate = today();
+
+  //       fs.writeFile(
+  //         path.join(__dirname, "public", "writeFile", `${nowDate}.html`),
+  //         convertData,
+  //         (err) => {
+  //           if (err) {
+  //             console.error("Error : ", err);
+  //           }
+  //         }
+  //       );
+
+  //       liTag += `<li><a href="${nowDate}.html">${nowDate}</a></li>`;
+
+  //       let mainIndex = mainTemp(liTag);
+
+  //       fs.writeFile(
+  //         path.join(__dirname, "public", "index.html"),
+  //         mainIndex,
+  //         (err) => {
+  //           if (err) {
+  //             console.error("Error : ", err);
+  //           }
+  //           fs.readFile("./public/index.html", (err, data) => {
+  //             if (err) {
+  //               connectErr(res);
+  //             }
+  //             res.writeHead(200, {
+  //               "Content-Type": "text/html; charset=UTF-8",
+  //             });
+  //             res.end(data);
+  //           });
+  //         }
+  //       );
+  //     });
+  //   }
+  // } else {
+  //   notFound(res);
+  // }
+  // });
 });
 
 const PORT = 3000;

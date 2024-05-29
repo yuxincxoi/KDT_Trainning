@@ -11,14 +11,19 @@
 
 #timeBox {
   background-color: cadetblue;
-  height: 100vh;
+  height: 90vh;
   width: 100px;
+  font-size: 30px;
+  overflow: scroll;
 }
 
-#scheduleBox {
+#timeLine {
   background-color: aquamarine;
-  width: 40vw;
   height: 90vh;
+}
+
+#scheduleContainer {
+  display: flex;
 }
 
 #detail {
@@ -28,12 +33,11 @@
   position: absolute;
   bottom: 0;
   border-radius: 25px 25px 0 0;
-  /* todo createBtn 빼기 */
-  display: flex;
 }
 
 #contents {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 #createBtn {
@@ -50,6 +54,5 @@
 
 #inputBox {
   background-color: brown;
-  width: 40vw;
   height: 90vh;
 }
