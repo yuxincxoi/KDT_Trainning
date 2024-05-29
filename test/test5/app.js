@@ -87,20 +87,35 @@ const server = http.createServer((req, res) => {
               res.end("서버 자체 에러");
               return;
             }
-
-            // * JSON 파일 parse하여 읽기
-            // fs.readFileSync("./data.json");
-            let data = JSON.parse(fs.readFileSync("./data.json"));
-            res.writeHead(200, {
-              "Content-Type": "application/json; charset=utf-8",
-            });
-            res.write(JSON.stringify({ message: "전송 완료" }));
-            res.end();
-
-            console.log(typeof data.title);
-            console.log(data.title);
+            console.log("json 파일 생성");
           }
         );
+
+        // * JSON 파일 parse하여 읽기
+        fs.readFile(path.join(__dirname, "data.json"), (err) => {
+          if (err) {
+            res.writeHead(500, {
+              "Content-Type": "text/plain; charset=utf-8",
+            });
+            res.end("서버 자체 에러");
+            return;
+          }
+          res.writeHead(200, {
+            "Content-Type": "application/json; charset=utf-8",
+          });
+          res.end();
+          // let data = JSON.parse(fs.readFileSync("./data.json"));
+          // console.log(data);
+          console.log("json 데이터를 읽었다 !");
+        });
+        // res.writeHead(200, {
+        //   "Content-Type": "application/json; charset=utf-8",
+        // });
+        // res.write(JSON.stringify({ message: "전송 완료" }));
+        // res.end();
+
+        // console.log(typeof data.title);
+        // console.log(data.title);
       });
     } else {
       res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
