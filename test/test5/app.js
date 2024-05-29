@@ -134,7 +134,7 @@ const server = http.createServer((req, res) => {
               <script src="script.js"></script>
             </body>
           </html>`,
-          (err, data) => {
+          (err) => {
             if (err) {
               res.writeHead(500, { "Content-Type": "text/plain" });
               res.end("500 code는 서버 자체의 에러");
@@ -143,7 +143,7 @@ const server = http.createServer((req, res) => {
             console.log("index 다시 생성 !");
 
             // * index 다시 읽기
-            fs.readFile(path.join(__dirname, "public/index.html"), (err) => {
+            fs.readFile("./public/index.html", (err, data) => {
               if (err) {
                 res.writeHead(500, { "Content-Type": "text/plain" });
                 res.end("500 code는 서버 자체의 에러");
