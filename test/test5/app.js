@@ -100,9 +100,6 @@ const server = http.createServer((req, res) => {
             res.end("서버 자체 에러");
             return;
           }
-          // res.writeHead(200, {
-          //   "Content-Type": "application/json; charset=utf-8",
-          // });
           let data = JSON.parse(fs.readFileSync("./data.json"));
           console.log("json 데이터를 읽었다 !");
         });
@@ -157,15 +154,6 @@ const server = http.createServer((req, res) => {
             });
           }
         );
-
-        // res.writeHead(200, {
-        //   "Content-Type": "application/json; charset=utf-8",
-        // });
-        // res.write(JSON.stringify({ message: "전송 완료" }));
-        // res.end();
-
-        // console.log(typeof data.title);
-        // console.log(data.title);
       });
     } else {
       res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
@@ -175,104 +163,6 @@ const server = http.createServer((req, res) => {
     res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     res.end("404 code는 페이지를 찾을 수 없음");
   }
-
-  // !
-  // let folderData = [];
-
-  // let liTag = "";
-
-  // fs.readdir(
-  //   path.join(__dirname, "public", "writeFile"),
-  //   "utf8",
-  //   (err, data) => {
-  //     if (err) {
-  //       console.error("Error : ", err);
-  //     }
-  //     folderData = data;
-  //     for (let i = 0; i < folderData.length; i++) {
-  //       if (folderData[i].includes(".html")) {
-  //         folderData[i] = folderData[i].split(".html")[0];
-  //         liTag += `<li><a href="${folderData[i]}.html">${folderData[i]}</a></li>`;
-  //       }
-  //     }
-  //   }
-  // );
-
-  // const server = http.createServer((req, res) => {
-  // let url = req.url;
-  // let filePath = fileUtills.getFilepath(url);
-  // let ext = fileUtills.getExtention(filePath);
-
-  // let contentType = fileUtills.getContentType(ext);
-  // if (req.method === "GET") {
-  //   if (req.url === url) {
-  //     fs.readFile(filePath, (err, data) => {
-  //       if (err) {
-  //         connectErr(res);
-  //         return err;
-  //       }
-  //       res.statusCode = 200;
-  //       res.setHeader("Content-Type", contentType);
-  //       res.write(data);
-  //       res.end();
-  //     });
-  //   } else if (req.url === "/favicon.ico") {
-  //     return;
-  //   } else {
-  //     notFound(res);
-  //   }
-  // } else if (req.method === "POST") {
-  //   if (req.url === "/create") {
-  //     let body = "";
-  //     req.on("data", (chunk) => {
-  //       body += chunk.toString();
-  //     });
-  //     req.on("end", () => {
-  //       const parsedData = qs.parse(body);
-  //       const title = parsedData.title;
-  //       const content = parsedData.content;
-  //       let convertData = template(title, content);
-
-  //       let nowDate = today();
-
-  //       fs.writeFile(
-  //         path.join(__dirname, "public", "writeFile", `${nowDate}.html`),
-  //         convertData,
-  //         (err) => {
-  //           if (err) {
-  //             console.error("Error : ", err);
-  //           }
-  //         }
-  //       );
-
-  //       liTag += `<li><a href="${nowDate}.html">${nowDate}</a></li>`;
-
-  //       let mainIndex = mainTemp(liTag);
-
-  //       fs.writeFile(
-  //         path.join(__dirname, "public", "index.html"),
-  //         mainIndex,
-  //         (err) => {
-  //           if (err) {
-  //             console.error("Error : ", err);
-  //           }
-  //           fs.readFile("./public/index.html", (err, data) => {
-  //             if (err) {
-  //               connectErr(res);
-  //             }
-  //             res.writeHead(200, {
-  //               "Content-Type": "text/html; charset=UTF-8",
-  //             });
-  //             res.end(data);
-  //           });
-  //         }
-  //       );
-  //     });
-  //   }
-  // } else {
-  //   notFound(res);
-  // }
-  // });
 });
 
 const PORT = 3000;
