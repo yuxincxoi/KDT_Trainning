@@ -102,36 +102,90 @@ const server = http.createServer((req, res) => {
           }
           let data = JSON.parse(fs.readFileSync("./data.json"));
           console.log("json 데이터를 읽었다 !");
-        });
 
-        // * index 다시 생성
-        fs.writeFile(
-          path.join(__dirname, "public/index.html"),
-          // todo
-          mainIdx,
-          (err) => {
-            if (err) {
-              res.writeHead(500, { "Content-Type": "text/plain" });
-              res.end("500 code는 서버 자체의 에러");
-              return;
-            }
-            console.log("index 다시 생성 !");
+          const eachSchedule = `
+            <div id="eachSchedule">
+              <h1>${data.title}</h1>
+              <p>${data.place}</p>
+            </div>
+          `;
 
-            // * index 다시 읽기
-            fs.readFile("./public/index.html", (err, data) => {
+          const mainIdx = `
+            <!DOCTYPE html>
+            <html lang="en">
+              <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Document</title>
+                <link rel="stylesheet" href="style.css" />
+              </head>
+              <body>
+                <div id="root">
+                  <div id="detail">
+                    <div id="createBtn"></div>
+                    <div id="scheduleContainer">
+                      <div id="contents">
+                        <div id="timeBox"></div>
+                        <div id="timeLine">${eachSchedule}</div>
+                      </div>
+                      <form id="inputBox" action="submit" method="post">
+                        <div>
+                          <!-- <label for="title">일정</label> -->
+                          <input id="title" type="text" name="title" placeholder="일정" />
+                        </div>
+                        <div>
+                          <!-- <label for="time">시간</label> -->
+                          <input id="time" type="time" name="time" placeholder="시간" />
+                        </div>
+                        <div>
+                          <!-- <label for="place">장소</label> -->
+                          <input id="place" type="text" name="place" placeholder="장소" />
+                        </div>
+                        <div>
+                          <!-- <label for="memo">메모</label> -->
+                          <input id="memo" type="text" name="memo" placeholder="메모" />
+                        </div>
+                        <div>
+                          <button id="saveBtn" type="submit">Save</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <script src="script.js"></script>
+              </body>
+            </html>
+          `;
+
+          // * index 다시 생성
+          fs.writeFile(
+            path.join(__dirname, "public/index.html"),
+            // todo
+            mainIdx,
+            (err) => {
               if (err) {
                 res.writeHead(500, { "Content-Type": "text/plain" });
                 res.end("500 code는 서버 자체의 에러");
                 return;
               }
-              res.writeHead(200, {
-                "Content-Type": "text/html; charset=utf-8",
+              console.log("index 다시 생성 !");
+
+              // * index 다시 읽기
+              fs.readFile("./public/index.html", (err, data) => {
+                if (err) {
+                  res.writeHead(500, { "Content-Type": "text/plain" });
+                  res.end("500 code는 서버 자체의 에러");
+                  return;
+                }
+                res.writeHead(200, {
+                  "Content-Type": "text/html; charset=utf-8",
+                });
+                console.log("index 다시 읽기 !");
+                res.end(data);
               });
-              console.log("index 다시 읽기 !");
-              res.end(data);
-            });
-          }
-        );
+            }
+          );
+        });
       });
     } else {
       res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
@@ -147,57 +201,3 @@ const PORT = 3000;
 server.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
-
-const eachSchedule = `
-  <div id="eachSchedule">
-    <h1>${data.title}</h1>
-    <p>${data.place}</p>
-  </div>
-`;
-
-const mainIdx = `
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-      <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-      <div id="root">
-        <div id="detail">
-          <div id="createBtn"></div>
-          <div id="scheduleContainer">
-            <div id="contents">
-              <div id="timeBox"></div>
-              <div id="timeLine">${eachSchedule}</div>
-            </div>
-            <form id="inputBox" action="submit" method="post">
-              <div>
-                <!-- <label for="title">일정</label> -->
-                <input id="title" type="text" name="title" placeholder="일정" />
-              </div>
-              <div>
-                <!-- <label for="time">시간</label> -->
-                <input id="time" type="time" name="time" placeholder="시간" />
-              </div>
-              <div>
-                <!-- <label for="place">장소</label> -->
-                <input id="place" type="text" name="place" placeholder="장소" />
-              </div>
-              <div>
-                <!-- <label for="memo">메모</label> -->
-                <input id="memo" type="text" name="memo" placeholder="메모" />
-              </div>
-              <div>
-                <button id="saveBtn" type="submit">Save</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <script src="script.js"></script>
-    </body>
-  </html>
-`;
