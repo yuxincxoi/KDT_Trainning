@@ -24,20 +24,14 @@
   height: 30px;
 }
 
-/* ! */
 #scheduleContainer {
   display: flex;
 }
 
-/* ! */
 #contents {
   background-color: orange;
   overflow: scroll;
   display: flex;
-  /* height: 90vh; */
-
-  /* display: grid;
-  grid-template-columns: 1fr 1fr; */
 }
 
 #timeBox {
