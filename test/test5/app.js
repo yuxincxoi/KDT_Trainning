@@ -107,30 +107,8 @@ const server = http.createServer((req, res) => {
         // * index 다시 생성
         fs.writeFile(
           path.join(__dirname, "public/index.html"),
-          `<!DOCTYPE html>
-          <html lang="en">
-            <head>
-              <meta charset="UTF-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-              <title>Document</title>
-              <link rel="stylesheet" href="style.css" />
-            </head>
-            <body>
-              <div id="root">
-                <div id="detail">
-                  <div id="createBtn"></div>
-                  <div id="scheduleContainer">
-                    <div id="timeBox"></div>
-                    <div id="contents">
-                      <div id="timeLine"></div>
-                      <form id="inputBox"></form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <script src="script.js"></script>
-            </body>
-          </html>`,
+          // todo
+          mainIdx,
           (err) => {
             if (err) {
               res.writeHead(500, { "Content-Type": "text/plain" });
@@ -169,3 +147,57 @@ const PORT = 3000;
 server.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
+
+const eachSchedule = `
+  <div id="eachSchedule">
+    <h1>${data.title}</h1>
+    <p>${data.place}</p>
+  </div>
+`;
+
+const mainIdx = `
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+      <div id="root">
+        <div id="detail">
+          <div id="createBtn"></div>
+          <div id="scheduleContainer">
+            <div id="contents">
+              <div id="timeBox"></div>
+              <div id="timeLine">${eachSchedule}</div>
+            </div>
+            <form id="inputBox" action="submit" method="post">
+              <div>
+                <!-- <label for="title">일정</label> -->
+                <input id="title" type="text" name="title" placeholder="일정" />
+              </div>
+              <div>
+                <!-- <label for="time">시간</label> -->
+                <input id="time" type="time" name="time" placeholder="시간" />
+              </div>
+              <div>
+                <!-- <label for="place">장소</label> -->
+                <input id="place" type="text" name="place" placeholder="장소" />
+              </div>
+              <div>
+                <!-- <label for="memo">메모</label> -->
+                <input id="memo" type="text" name="memo" placeholder="메모" />
+              </div>
+              <div>
+                <button id="saveBtn" type="submit">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <script src="script.js"></script>
+    </body>
+  </html>
+`;
