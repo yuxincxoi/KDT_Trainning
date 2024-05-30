@@ -9,23 +9,6 @@
   height: 100vh;
 }
 
-#timeBox {
-  background-color: cadetblue;
-  height: 90vh;
-  width: 100px;
-  font-size: 30px;
-  overflow: scroll;
-}
-
-#timeLine {
-  background-color: aquamarine;
-  height: 90vh;
-}
-
-#scheduleContainer {
-  display: flex;
-}
-
 #detail {
   background-color: antiquewhite;
   height: 90vh;
@@ -35,24 +18,49 @@
   border-radius: 25px 25px 0 0;
 }
 
-#contents {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 #createBtn {
   background-color: blue;
   width: 30px;
   height: 30px;
 }
 
-#saveBtn {
-  background-color: blueviolet;
-  width: 30px;
-  height: 30px;
+/* ! */
+#scheduleContainer {
+  display: flex;
+}
+
+/* ! */
+#contents {
+  background-color: orange;
+  overflow: scroll;
+  display: flex;
+  /* height: 90vh; */
+
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+}
+
+#timeBox {
+  background-color: cadetblue;
+  height: 100vh;
+  width: 100px;
+  font-size: 30px;
+}
+
+#timeLine {
+  background-color: aquamarine;
+  width: 50vw;
+  height: 100vh;
 }
 
 #inputBox {
   background-color: brown;
   height: 90vh;
+  width: auto;
+}
+
+#saveBtn {
+  background-color: blueviolet;
+  width: 30px;
+  height: 30px;
 }
