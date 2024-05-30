@@ -29,28 +29,33 @@
 
 #scheduleContainer {
   display: flex;
-  height: 85vh;
+  height: 80vh;
   margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  /* margin-bottom: 50px; */
 }
 
 #contents {
   background-color: orange;
   overflow: scroll;
   display: flex;
-  height: 85vh;
+  height: 80vh;
 }
 
 #timeBox {
   background-color: cadetblue;
   width: 100px;
-  height: 110vh;
-  font-size: 30px;
+  height: 300vh;
+  font-size: 26px;
+  text-align: center;
+  line-height: 100px;
 }
 
 #timeLine {
   background-color: aquamarine;
   width: 50vw;
-  height: 110vh;
+  height: 300vh;
 }
 
 #inputBox {
