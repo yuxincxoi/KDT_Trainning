@@ -14,43 +14,43 @@ const errMsg = {
   404: "404 code는 페이지를 찾을 수 없음",
 };
 
+const err500 = (err) => {
+  if (err) {
+    res.writeHead(500, { "Content-Type": mime.text });
+    res.end(errMsg[500]);
+    return;
+  }
+};
+
+const err404 = () => {
+  res.writeHead(404, { "Content-Type": mime.text });
+  res.end(errMsg[404]);
+};
+
 const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     if (req.url === "/") {
       fs.readFile(path.join(__dirname, "public", "index.html"), (err, data) => {
-        if (err) {
-          res.writeHead(500, { "Content-Type": mime.text });
-          res.end(errMsg[500]);
-          return;
-        }
+        err500(err);
         res.writeHead(200, { "Content-Type": mime.html });
         res.end(data);
       });
     } else if (req.url === "/style.css") {
       fs.readFile(path.join(__dirname, "public", "style.css"), (err, data) => {
-        if (err) {
-          res.writeHead(500, { "Content-Type": mime.text });
-          res.end(errMsg[500]);
-          return;
-        }
+        err500(err);
         res.writeHead(200, { "Content-Type": mime.css });
         res.end(data);
       });
     } else if (req.url === "/script.js") {
       fs.readFile(path.join(__dirname, "public", "script.js"), (err, data) => {
-        if (err) {
-          res.writeHead(500, { "Content-Type": mime.text });
-          res.end(errMsg[500]);
-          return;
-        }
+        err500(err);
         res.writeHead(200, {
           "Content-Type": mime.js,
         });
         res.end(data);
       });
     } else {
-      res.writeHead(404, { "Content-Type": mime.text });
-      res.end(errMsg[404]);
+      err404();
     }
   } else if (req.method === "POST") {
     if (req.url === "/submit") {
@@ -92,26 +92,14 @@ const server = http.createServer((req, res) => {
           path.join(__dirname, "data.json"),
           jsonDataString,
           (err) => {
-            if (err) {
-              res.writeHead(500, {
-                "Content-Type": mime.text,
-              });
-              res.end(errMsg[500]);
-              return;
-            }
+            err500(err);
             console.log("json 파일 생성");
           }
         );
 
         // * JSON 파일 parse하여 읽기
         fs.readFile(path.join(__dirname, "data.json"), (err) => {
-          if (err) {
-            res.writeHead(500, {
-              "Content-Type": mime.text,
-            });
-            res.end(errMsg[500]);
-            return;
-          }
+          err500(err);
           let data = JSON.parse(fs.readFileSync("./data.json"));
           console.log("json 데이터를 읽었다 !");
 
@@ -175,22 +163,14 @@ const server = http.createServer((req, res) => {
             // todo
             mainIdx,
             (err) => {
-              if (err) {
-                res.writeHead(500, { "Content-Type": mime.text });
-                res.end(errMsg[500]);
-                return;
-              }
+              err500(err);
               console.log("index 다시 생성 !");
 
               // * index 다시 읽기
               fs.readFile(
                 path.join(__dirname, "public", "index.html"),
                 (err, data) => {
-                  if (err) {
-                    res.writeHead(500, { "Content-Type": mime.text });
-                    res.end(errMsg[500]);
-                    return;
-                  }
+                  err500(err);
                   res.writeHead(200, {
                     "Content-Type": mime.html,
                   });
@@ -203,12 +183,10 @@ const server = http.createServer((req, res) => {
         });
       });
     } else {
-      res.writeHead(404, { "Content-Type": mime.text });
-      res.end(errMsg[404]);
+      err404();
     }
   } else {
-    res.writeHead(404, { "Content-Type": mime.text });
-    res.end(errMsg[404]);
+    err404();
   }
 });
 
