@@ -17,7 +17,7 @@ const errMsg = {
 const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     if (req.url === "/") {
-      fs.readFile(path.join(__dirname, "public/index.html"), (err, data) => {
+      fs.readFile(path.join(__dirname, "public", "index.html"), (err, data) => {
         if (err) {
           res.writeHead(500, { "Content-Type": mime.text });
           res.end(errMsg[500]);
@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
         res.end(data);
       });
     } else if (req.url === "/style.css") {
-      fs.readFile(path.join(__dirname, "public/style.css"), (err, data) => {
+      fs.readFile(path.join(__dirname, "public", "style.css"), (err, data) => {
         if (err) {
           res.writeHead(500, { "Content-Type": mime.text });
           res.end(errMsg[500]);
@@ -37,7 +37,7 @@ const server = http.createServer((req, res) => {
         res.end(data);
       });
     } else if (req.url === "/script.js") {
-      fs.readFile(path.join(__dirname, "public/script.js"), (err, data) => {
+      fs.readFile(path.join(__dirname, "public", "script.js"), (err, data) => {
         if (err) {
           res.writeHead(500, { "Content-Type": mime.text });
           res.end(errMsg[500]);
@@ -171,7 +171,7 @@ const server = http.createServer((req, res) => {
 
           // * index 다시 생성
           fs.writeFile(
-            path.join(__dirname, "public/index.html"),
+            path.join(__dirname, "public", "index.html"),
             // todo
             mainIdx,
             (err) => {
@@ -183,18 +183,21 @@ const server = http.createServer((req, res) => {
               console.log("index 다시 생성 !");
 
               // * index 다시 읽기
-              fs.readFile("./public/index.html", (err, data) => {
-                if (err) {
-                  res.writeHead(500, { "Content-Type": mime.text });
-                  res.end(errMsg[500]);
-                  return;
+              fs.readFile(
+                path.join(__dirname, "public", "index.html"),
+                (err, data) => {
+                  if (err) {
+                    res.writeHead(500, { "Content-Type": mime.text });
+                    res.end(errMsg[500]);
+                    return;
+                  }
+                  res.writeHead(200, {
+                    "Content-Type": mime.html,
+                  });
+                  console.log("index 다시 읽기 !");
+                  res.end(data);
                 }
-                res.writeHead(200, {
-                  "Content-Type": mime.html,
-                });
-                console.log("index 다시 읽기 !");
-                res.end(data);
-              });
+              );
             }
           );
         });
