@@ -27,6 +27,9 @@ const err404 = () => {
   res.end(errMsg[404]);
 };
 
+let eachSchedule = "";
+let mainIdx = "";
+
 const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     if (req.url === "/") {
@@ -103,14 +106,14 @@ const server = http.createServer((req, res) => {
           let data = JSON.parse(fs.readFileSync("./data.json"));
           console.log("json 데이터를 읽었다 !");
 
-          const eachSchedule = `
+          eachSchedule += `
             <div id="eachSchedule">
               <h1>${data.title}</h1>
               <p>${data.place}</p>
             </div>
           `;
 
-          const mainIdx = `
+          mainIdx = `
             <!DOCTYPE html>
             <html lang="en">
               <head>
@@ -160,7 +163,6 @@ const server = http.createServer((req, res) => {
           // * index 다시 생성
           fs.writeFile(
             path.join(__dirname, "public", "index.html"),
-            // todo
             mainIdx,
             (err) => {
               err500(err);
