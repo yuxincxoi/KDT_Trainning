@@ -7,5 +7,4 @@ function workThree(index, name) {
   return local;
 }
 
-const test = workThree(28, "최유진");
-console.log(test);
+module.exports = workThree;
