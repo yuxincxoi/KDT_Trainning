@@ -1,14 +1,11 @@
-function workThree(a, b) {
-  // let local = {};
-  // local[a] = "a";
-  // local[b] = "b";
-  // return local;
-
-  return {
-    a: a,
-    b: b,
+function workThree(index, name) {
+  let local = {
+    number: index + 1,
+    name: name,
   };
+
+  return local;
 }
 
-const test = workThree("점심시간 ", "한시간 남음");
+const test = workThree(28, "최유진");
 console.log(test);
