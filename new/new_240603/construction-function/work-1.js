@@ -6,5 +6,17 @@ function workOne(a, b) {
   // * logic : 매개변수 두 개 받기
   // * logic : return은 객체
 
-  return Object;
+  let localVariable = {};
+
+  localVariable.a = a;
+  localVariable.b = b;
+  // { a: "나는", b: "최유진" }
+
+  localVariable[a] = a;
+  localVariable[b] = b;
+  // { "나는": "나는", "최유진": "최유진" }
+
+  return console.log(localVariable);
 }
+
+workOne("나는", "최유진");
