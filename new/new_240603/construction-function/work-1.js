@@ -8,15 +8,11 @@ function workOne(a, b) {
 
   let localVariable = {};
 
-  localVariable.a = a;
-  localVariable.b = b;
-  // { a: "나는", b: "최유진" }
-
   localVariable[a] = a;
   localVariable[b] = b;
-  // { "나는": "나는", "최유진": "최유진" }
 
-  return console.log(localVariable);
+  return localVariable;
 }
 
-workOne("나는", "최유진");
+const test = workOne("나는", "최유진");
+console.log(test);
