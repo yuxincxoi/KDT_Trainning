@@ -14,3 +14,6 @@ class NewOld {
     this.second = b;
   }
 }
+
+let newStyle = new NewOld(1, 2);
+console.log(newStyle);
