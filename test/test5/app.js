@@ -30,6 +30,7 @@ const err404 = () => {
 let eachSchedule = "";
 let mainIdx = "";
 
+// todo : readFile, writeFile 함수로 만들기
 const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     if (req.url === "/") {
