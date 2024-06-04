@@ -19,10 +19,14 @@ class WorkTow {
       throw new Error("b는 숫자만 입력 가능합니다.");
     }
   }
+
+  add() {
+    return this._a + this._b;
+  }
 }
 
 // 객체 생성
 let test = new WorkTow(1, 2);
 
 console.log(test);
-console.log(test._a + test._b);
+console.log(test.add());
