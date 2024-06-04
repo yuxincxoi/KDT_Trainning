@@ -1,4 +1,4 @@
-class WorkTow {
+class WorkTwo {
   constructor(a, b) {
     this.a = a;
     this.b = b;
@@ -26,7 +26,10 @@ class WorkTow {
 }
 
 // 객체 생성
-let test = new WorkTow(1, 2);
+let test = new WorkTwo(1, 2);
 
 console.log(test);
 console.log(test.add());
+
+// 인스턴스 test의 타입이 WorkTwo이면 true
+console.log(test instanceof WorkTwo);
