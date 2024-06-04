@@ -7,21 +7,19 @@ const rows = csvData.split("\r\n");
 
 const year = rows[0].split(",");
 
-let data = [];
+let data = {};
 
 for (i = 1; i < rows.length - 1; i++) {
   const obj = {};
   const row = rows[i].split(",");
-  for (j = 0; j < year.length; j++) {
-    if (j == 0) {
-      obj["지역"] = row[j];
-      obj[year[j]] = row[j];
-    } else if (j >= 1) {
-      obj[year[j]] = row[j];
-    }
+  for (j = 1; j < year.length; j++) {
+    obj[year[j]] = row[j];
   }
-  data.push(obj);
+  data[row[0]] = obj;
+  // obj["지역"] = row[j];
+  // data.push(obj);
 }
+console.log(data);
 
 const jsonData = JSON.stringify(data);
 
