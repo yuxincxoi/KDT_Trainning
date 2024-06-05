@@ -101,97 +101,101 @@ const server = http.createServer((req, res) => {
           }
         );
 
-        // * JSON 파일 parse하여 읽기
+        // * data 폴더 list 읽기
         let readDir = fs.readdirSync(path.join(__dirname, "data"), (err) => {
           err500(err);
           // let readData = JSON.parse(data);
-          console.log("data directories를 읽었다 !");
+          console.log("Directories를 읽었다 !");
         });
 
+        // * JSON 파일 parse하여 읽기
         readDir.forEach((element) => {
           let readData = fs.readFileSync(
             path.join(__dirname, "data", `${element}`),
-            "utf8"
+            (err) => {
+              console.log("json data를 읽었다 !");
+            }
           );
-          console.log(readData);
-        });
 
-        eachSchedule += `
+          let parsedReadData = JSON.parse(readData);
+
+          eachSchedule += `
             <div id="eachSchedule">
-              // <h1></h1>
-              // <p></p>
+              <h1>${parsedReadData.title}</h1>
+              <p>${parsedReadData.place}</p>
             </div>
           `;
 
-        mainIdx = `
-            <!DOCTYPE html>
-            <html lang="en">
-              <head>
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Document</title>
-                <link rel="stylesheet" href="style.css" />
-              </head>
-              <body>
-                <div id="root">
-                  <div id="detail">
-                    <div id="createBtn"></div>
-                    <div id="scheduleContainer">
-                      <div id="contents">
-                        <div id="timeBox"></div>
-                        <div id="timeLine">${eachSchedule}</div>
-                      </div>
-                      <form id="inputBox" action="submit" method="post">
-                        <div>
-                          <!-- <label for="title">일정</label> -->
-                          <input id="title" type="text" name="title" placeholder="일정" />
-                        </div>
-                        <div>
-                          <!-- <label for="time">시간</label> -->
-                          <input id="time" type="time" name="time" placeholder="시간" />
-                        </div>
-                        <div>
-                          <!-- <label for="place">장소</label> -->
-                          <input id="place" type="text" name="place" placeholder="장소" />
-                        </div>
-                        <div>
-                          <!-- <label for="memo">메모</label> -->
-                          <input id="memo" type="text" name="memo" placeholder="메모" />
-                        </div>
-                        <div>
-                          <button id="saveBtn" type="submit">Save</button>
-                        </div>
-                      </form>
+          mainIdx = `
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Document</title>
+              <link rel="stylesheet" href="style.css" />
+            </head>
+            <body>
+              <div id="root">
+                <div id="detail">
+                  <div id="createBtn"></div>
+                  <div id="scheduleContainer">
+                    <div id="contents">
+                      <div id="timeBox"></div>
+                      <div id="timeLine">${eachSchedule}</div>
                     </div>
+                    <form id="inputBox" action="submit" method="post">
+                      <div>
+                        <!-- <label for="title">일정</label> -->
+                        <input id="title" type="text" name="title" placeholder="일정" />
+                      </div>
+                      <div>
+                        <!-- <label for="time">시간</label> -->
+                        <input id="time" type="time" name="time" placeholder="시간" />
+                      </div>
+                      <div>
+                        <!-- <label for="place">장소</label> -->
+                        <input id="place" type="text" name="place" placeholder="장소" />
+                      </div>
+                      <div>
+                        <!-- <label for="memo">메모</label> -->
+                        <input id="memo" type="text" name="memo" placeholder="메모" />
+                      </div>
+                      <div>
+                        <button id="saveBtn" type="submit">Save</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
-                <script src="script.js"></script>
-              </body>
-            </html>
+              </div>
+              <script src="script.js"></script>
+            </body>
+          </html>
           `;
 
-        // * index 다시 생성
-        fs.writeFile(
-          path.join(__dirname, "public", "index.html"),
-          mainIdx,
-          (err) => {
-            err500(err);
-            console.log("index 다시 생성 !");
+          // * index 다시 생성
+          fs.writeFileSync(
+            path.join(__dirname, "public", "index.html"),
+            mainIdx,
+            (err) => {
+              err500(err);
+              console.log("index 다시 생성 !");
 
-            // * index 다시 읽기
-            fs.readFile(
-              path.join(__dirname, "public", "index.html"),
-              (err, data) => {
-                err500(err);
-                res.writeHead(200, {
-                  "Content-Type": mime.html,
-                });
-                console.log("index 다시 읽기 !");
-                res.end(data);
-              }
-            );
-          }
-        );
+              // * index 다시 읽기
+              fs.readFile(
+                path.join(__dirname, "public", "index.html"),
+                (err, data) => {
+                  err500(err);
+                  res.writeHead(200, {
+                    "Content-Type": mime.html,
+                  });
+                  console.log("index 다시 읽기 !");
+                  res.end(data);
+                }
+              );
+            }
+          );
+        });
       });
     } else {
       err404(res);
