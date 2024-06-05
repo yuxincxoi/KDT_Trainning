@@ -8,9 +8,11 @@ const keyName = `
 
 const example = `
   http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?
-  serviceKey=인증키(URL Encode)
+  serviceKey=${keyName}
   &
   numOfRows=10
   &
   pageNo=1
 `;
+
+console.log(example);
