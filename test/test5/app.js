@@ -22,7 +22,7 @@ const err500 = (err) => {
   }
 };
 
-const err404 = () => {
+const err404 = (res) => {
   res.writeHead(404, { "Content-Type": mime.text });
   res.end(errMsg[404]);
 };
@@ -54,7 +54,7 @@ const server = http.createServer((req, res) => {
         res.end(data);
       });
     } else {
-      err404();
+      err404(res);
     }
   } else if (req.method === "POST") {
     if (req.url === "/submit") {
@@ -93,7 +93,7 @@ const server = http.createServer((req, res) => {
 
         // * 입력한 데이터를 JSON 형식의 파일로 생성
         fs.writeFile(
-          path.join(__dirname, "data.json"),
+          path.join(__dirname, "data", `${title}.json`),
           jsonDataString,
           (err) => {
             err500(err);
@@ -102,15 +102,24 @@ const server = http.createServer((req, res) => {
         );
 
         // * JSON 파일 parse하여 읽기
-        fs.readFile(path.join(__dirname, "data.json"), (err) => {
+        let readDir = fs.readdir(path.join(__dirname, "data"), (err, data) => {
           err500(err);
-          let data = JSON.parse(fs.readFileSync("./data.json"));
+          data.forEach((element) => {
+            let readData = fs.readFile(
+              path.join(__dirname, "data", `${element}`),
+              (err) => {
+                if (err) console.error(err);
+              }
+            );
+            console.log("나는" + readData);
+          });
+          // let readData = JSON.parse(data);
           console.log("json 데이터를 읽었다 !");
 
           eachSchedule += `
             <div id="eachSchedule">
-              <h1>${data.title}</h1>
-              <p>${data.place}</p>
+              // <h1></h1>
+              // <p></p>
             </div>
           `;
 
@@ -186,7 +195,7 @@ const server = http.createServer((req, res) => {
         });
       });
     } else {
-      err404();
+      err404(res);
     }
   } else {
     err404();
