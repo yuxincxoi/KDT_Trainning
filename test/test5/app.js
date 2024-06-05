@@ -102,28 +102,28 @@ const server = http.createServer((req, res) => {
         );
 
         // * JSON 파일 parse하여 읽기
-        let readDir = fs.readdir(path.join(__dirname, "data"), (err, data) => {
+        let readDir = fs.readdirSync(path.join(__dirname, "data"), (err) => {
           err500(err);
-          data.forEach((element) => {
-            let readData = fs.readFile(
-              path.join(__dirname, "data", `${element}`),
-              (err) => {
-                if (err) console.error(err);
-              }
-            );
-            console.log("나는" + readData);
-          });
           // let readData = JSON.parse(data);
-          console.log("json 데이터를 읽었다 !");
+          console.log("data directories를 읽었다 !");
+        });
 
-          eachSchedule += `
+        readDir.forEach((element) => {
+          let readData = fs.readFileSync(
+            path.join(__dirname, "data", `${element}`),
+            "utf8"
+          );
+          console.log(readData);
+        });
+
+        eachSchedule += `
             <div id="eachSchedule">
               // <h1></h1>
               // <p></p>
             </div>
           `;
 
-          mainIdx = `
+        mainIdx = `
             <!DOCTYPE html>
             <html lang="en">
               <head>
@@ -170,29 +170,28 @@ const server = http.createServer((req, res) => {
             </html>
           `;
 
-          // * index 다시 생성
-          fs.writeFile(
-            path.join(__dirname, "public", "index.html"),
-            mainIdx,
-            (err) => {
-              err500(err);
-              console.log("index 다시 생성 !");
+        // * index 다시 생성
+        fs.writeFile(
+          path.join(__dirname, "public", "index.html"),
+          mainIdx,
+          (err) => {
+            err500(err);
+            console.log("index 다시 생성 !");
 
-              // * index 다시 읽기
-              fs.readFile(
-                path.join(__dirname, "public", "index.html"),
-                (err, data) => {
-                  err500(err);
-                  res.writeHead(200, {
-                    "Content-Type": mime.html,
-                  });
-                  console.log("index 다시 읽기 !");
-                  res.end(data);
-                }
-              );
-            }
-          );
-        });
+            // * index 다시 읽기
+            fs.readFile(
+              path.join(__dirname, "public", "index.html"),
+              (err, data) => {
+                err500(err);
+                res.writeHead(200, {
+                  "Content-Type": mime.html,
+                });
+                console.log("index 다시 읽기 !");
+                res.end(data);
+              }
+            );
+          }
+        );
       });
     } else {
       err404(res);
