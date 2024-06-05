@@ -92,7 +92,7 @@ const server = http.createServer((req, res) => {
         const jsonDataString = JSON.stringify(jsonData, null, 2);
 
         // * 입력한 데이터를 JSON 형식의 파일로 생성
-        fs.writeFile(
+        fs.writeFileSync(
           path.join(__dirname, "data", `${title}.json`),
           jsonDataString,
           (err) => {
