@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const root = document.getElementById("root");
+
+      const getEventDataAJAX = () => {
+        const xhr = new XMLHttpRequest();
+        console.dir(xhr);
+
+        xhr.open(
+          "GET",
+          "http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?serviceKey=se%2Be7mPdWCb0fBl1Vh0%2BKK6NbrNzHDbTsjqUpCMu5rT0SNgXCwIyfTz3x%2BQU6GQJ8fCy0GOMMbor6S%2FoFZzPWw%3D%3D&numOfRows=10&pageNo=1",
+          true
+        );
+
+        xhr.addEventListener("load", () => {
+          if (xhr.status === 200) {
+            console.log("데이터 받은 후 조회");
+            console.dir(xhr);
+
+            const result = JSON.parse(xhr.responseText);
+            console.dir(result);
+
+            const events = result.msgBody;
+            console.dir(events[0].title);
+
+            events.forEach((element) => {
+              const p = document.createElement("p");
+              root.append(p);
+
+              p.innerText = element.title;
+            });
+          }
+        });
+
+        xhr.send();
+      };
+
+      getEventDataAJAX();
+    </script>
+  </body>
+</html>
