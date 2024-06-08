@@ -1,13 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-
-const mime = {
-  html: "text/html; charset=utf-8",
-  text: "text/plain; charset=utf-8",
-  css: "text/css; charset=utf-8",
-  js: "text/javascript; charset=utf-8",
-};
+const mimeType = require("./modules/mimeType");
 
 const errMsg = {
   500: "500 code는 서버 자체의 에러",
@@ -16,14 +10,14 @@ const errMsg = {
 
 const err500 = (err) => {
   if (err) {
-    res.writeHead(500, { "Content-Type": mime.text });
+    res.writeHead(500, { "Content-Type": mimeType.text });
     res.end(errMsg[500]);
     return;
   }
 };
 
 const err404 = (res) => {
-  res.writeHead(404, { "Content-Type": mime.text });
+  res.writeHead(404, { "Content-Type": mimeType.text });
   res.end(errMsg[404]);
 };
 
@@ -36,20 +30,20 @@ const server = http.createServer((req, res) => {
     if (req.url === "/") {
       fs.readFile(path.join(__dirname, "public", "index.html"), (err, data) => {
         err500(err);
-        res.writeHead(200, { "Content-Type": mime.html });
+        res.writeHead(200, { "Content-Type": mimeType.html });
         res.end(data);
       });
     } else if (req.url === "/style.css") {
       fs.readFile(path.join(__dirname, "public", "style.css"), (err, data) => {
         err500(err);
-        res.writeHead(200, { "Content-Type": mime.css });
+        res.writeHead(200, { "Content-Type": mimeType.css });
         res.end(data);
       });
     } else if (req.url === "/script.js") {
       fs.readFile(path.join(__dirname, "public", "script.js"), (err, data) => {
         err500(err);
         res.writeHead(200, {
-          "Content-Type": mime.js,
+          "Content-Type": mimeType.js,
         });
         res.end(data);
       });
@@ -184,7 +178,7 @@ const server = http.createServer((req, res) => {
                 (err, data) => {
                   err500(err);
                   res.writeHead(200, {
-                    "Content-Type": mime.html,
+                    "Content-Type": mimeType.html,
                   });
                   console.log("index 다시 읽기 !");
                   res.end(data);
