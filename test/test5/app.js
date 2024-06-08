@@ -2,24 +2,8 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const mimeType = require("./modules/mimeType");
-
-const errMsg = {
-  500: "500 code는 서버 자체의 에러",
-  404: "404 code는 페이지를 찾을 수 없음",
-};
-
-const err500 = (err) => {
-  if (err) {
-    res.writeHead(500, { "Content-Type": mimeType.text });
-    res.end(errMsg[500]);
-    return;
-  }
-};
-
-const err404 = (res) => {
-  res.writeHead(404, { "Content-Type": mimeType.text });
-  res.end(errMsg[404]);
-};
+const readFile = require("./modules/readFile");
+const errMsg = require("./modules/errMsg");
 
 let eachSchedule = "";
 let mainIdx = "";
@@ -28,27 +12,18 @@ let mainIdx = "";
 const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     if (req.url === "/") {
-      fs.readFile(path.join(__dirname, "public", "index.html"), (err, data) => {
-        err500(err);
-        res.writeHead(200, { "Content-Type": mimeType.html });
-        res.end(data);
-      });
+      readFile(
+        path.join(__dirname, "public", "index.html"),
+        mimeType.html,
+        res
+      );
     } else if (req.url === "/style.css") {
-      fs.readFile(path.join(__dirname, "public", "style.css"), (err, data) => {
-        err500(err);
-        res.writeHead(200, { "Content-Type": mimeType.css });
-        res.end(data);
-      });
+      readFile(path.join(__dirname, "public", "style.css"), mimeType.css, res);
     } else if (req.url === "/script.js") {
-      fs.readFile(path.join(__dirname, "public", "script.js"), (err, data) => {
-        err500(err);
-        res.writeHead(200, {
-          "Content-Type": mimeType.js,
-        });
-        res.end(data);
-      });
+      readFile(path.join(__dirname, "public", "script.js"), mimeType.js, res);
     } else {
-      err404(res);
+      res.writeHead(404, { "Content-Type": mimeType.text });
+      res.end(errMsg[404]);
     }
   } else if (req.method === "POST") {
     if (req.url === "/submit") {
@@ -90,14 +65,22 @@ const server = http.createServer((req, res) => {
           path.join(__dirname, "data", `${title}.json`),
           jsonDataString,
           (err) => {
-            err500(err);
+            if (err) {
+              res.writeHead(500, { "Content-Type": mimeType.text });
+              res.end(errMsg[500]);
+              return;
+            }
             console.log("json 파일 생성");
           }
         );
 
         // * JSON 파일 parse하여 읽기
         let readDir = fs.readdir(path.join(__dirname, "data"), (err, data) => {
-          err500(err);
+          if (err) {
+            res.writeHead(500, { "Content-Type": mimeType.text });
+            res.end(errMsg[500]);
+            return;
+          }
           data.forEach((element) => {
             let readData = fs.readFile(
               path.join(__dirname, "data", `${element}`),
@@ -169,30 +152,30 @@ const server = http.createServer((req, res) => {
             path.join(__dirname, "public", "index.html"),
             mainIdx,
             (err) => {
-              err500(err);
+              if (err) {
+                res.writeHead(500, { "Content-Type": mimeType.text });
+                res.end(errMsg[500]);
+                return;
+              }
               console.log("index 다시 생성 !");
 
               // * index 다시 읽기
-              fs.readFile(
+              readFile(
                 path.join(__dirname, "public", "index.html"),
-                (err, data) => {
-                  err500(err);
-                  res.writeHead(200, {
-                    "Content-Type": mimeType.html,
-                  });
-                  console.log("index 다시 읽기 !");
-                  res.end(data);
-                }
+                mimeType.html,
+                res
               );
             }
           );
         });
       });
     } else {
-      err404(res);
+      res.writeHead(404, { "Content-Type": mimeType.text });
+      res.end(errMsg[404]);
     }
   } else {
-    err404();
+    res.writeHead(404, { "Content-Type": mimeType.text });
+    res.end(errMsg[404]);
   }
 });
 
