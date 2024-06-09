@@ -8,7 +8,6 @@ const errMsg = require("./modules/errMsg");
 let eachSchedule = "";
 let mainIdx = "";
 
-// todo : readFile, writeFile 함수로 만들기
 const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     if (req.url === "/") {
@@ -75,32 +74,38 @@ const server = http.createServer((req, res) => {
         );
 
         // * JSON 파일 parse하여 읽기
-        let readDir = fs.readdir(path.join(__dirname, "data"), (err, data) => {
+        let dir = fs.readdirSync(path.join(__dirname, "data"), (err) => {
           if (err) {
             res.writeHead(500, { "Content-Type": mimeType.text });
             res.end(errMsg[500]);
             return;
           }
-          data.forEach((element) => {
-            let readData = fs.readFile(
-              path.join(__dirname, "data", `${element}`),
-              (err) => {
-                if (err) console.error(err);
-              }
-            );
-            console.log("나는" + readData);
-          });
-          // let readData = JSON.parse(data);
-          console.log("json 데이터를 읽었다 !");
+        });
+        console.log(dir);
+        console.log(typeof dir);
 
-          eachSchedule += `
+        // for (value of dir) {
+        // let dataList = [];
+        let readJsonData = fs.readFileSync(
+          path.join(__dirname, "data", `aaa.json`)
+        );
+
+        let parseJsonData = JSON.parse(readJsonData);
+        console.log(parseJsonData);
+        // dataList.push(JSON.parse(readJsonData));
+
+        // console.log(dataList);
+
+        eachSchedule += `
             <div id="eachSchedule">
-              // <h1></h1>
-              // <p></p>
+              <h1>${parseJsonData.title}</h1>
+              <p>${parseJsonData.place}</p>
             </div>
           `;
+        // }
+        console.log("json 데이터를 읽었다 !");
 
-          mainIdx = `
+        mainIdx = `
             <!DOCTYPE html>
             <html lang="en">
               <head>
@@ -147,27 +152,26 @@ const server = http.createServer((req, res) => {
             </html>
           `;
 
-          // * index 다시 생성
-          fs.writeFile(
-            path.join(__dirname, "public", "index.html"),
-            mainIdx,
-            (err) => {
-              if (err) {
-                res.writeHead(500, { "Content-Type": mimeType.text });
-                res.end(errMsg[500]);
-                return;
-              }
-              console.log("index 다시 생성 !");
-
-              // * index 다시 읽기
-              readFile(
-                path.join(__dirname, "public", "index.html"),
-                mimeType.html,
-                res
-              );
+        // * index 다시 생성
+        fs.writeFile(
+          path.join(__dirname, "public", "index.html"),
+          mainIdx,
+          (err) => {
+            if (err) {
+              res.writeHead(500, { "Content-Type": mimeType.text });
+              res.end(errMsg[500]);
+              return;
             }
-          );
-        });
+            console.log("index 다시 생성 !");
+
+            // * index 다시 읽기
+            readFile(
+              path.join(__dirname, "public", "index.html"),
+              mimeType.html,
+              res
+            );
+          }
+        );
       });
     } else {
       res.writeHead(404, { "Content-Type": mimeType.text });
