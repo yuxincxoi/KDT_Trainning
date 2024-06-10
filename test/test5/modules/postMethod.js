@@ -4,8 +4,8 @@ const mimeType = require("./mimeType");
 const readFile = require("./readFile");
 const errMsg = require("./errMsg");
 
-let eachSchedule = "";
-let mainIdx = "";
+// let eachSchedule = "";
+// let mainIdx = "";
 
 const postMethod = (req, res) => {
   if (req.url === "/submit") {
@@ -57,36 +57,37 @@ const postMethod = (req, res) => {
       );
 
       // * JSON 파일 parse하여 읽기
-      let dir = fs.readdirSync(path.join("./", "data"), (err) => {
+      let dir = fs.readdirSync("./data", (err) => {
         if (err) {
           res.writeHead(500, { "Content-Type": mimeType.text });
           res.end(errMsg[500]);
           return;
         }
       });
-      console.log(dir);
 
-      // for (value of dir) {
-      // let dataList = [];
-      let readJsonData = fs.readFileSync(path.join("./", "data", `kko.json`));
+      let dataList = [];
 
-      console.log(typeof readJsonData);
-      let parseJsonData = JSON.parse(readJsonData);
-      console.log(typeof parseJsonData);
-      // dataList.push(JSON.parse(readJsonData));
+      // for(value of dir) {}
+      for (i = 0; i < dir.length; i++) {
+        let readJsonData = fs.readFileSync(`./data/${dir[i]}`);
+        // let readJsonData = fs.readFileSync(`./data/${value}`)
 
-      console.log(readJsonData);
+        console.log("readJsonData:", readJsonData);
+        dataList.push(readJsonData);
+      }
 
-      eachSchedule += `
-          <div id="eachSchedule">
-            <h1></h1>
-            <p></p>
-          </div>
-        `;
-      // }
+      console.log("dataList:", dataList);
+
+      let eachSchedule = `
+      <div id="eachSchedule">
+      <h1></h1>
+      <p></p>
+      </div>
+      `;
+
       console.log("json 데이터를 읽었다 !");
 
-      mainIdx = `
+      let mainIdx = `
           <!DOCTYPE html>
           <html lang="en">
             <head>
