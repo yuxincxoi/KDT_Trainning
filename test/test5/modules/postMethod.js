@@ -62,7 +62,16 @@ const postMethod = (req, res) => {
             }
             fileData.push(`${value.replace(`.json`, "")}:${data}`);
 
-            console.log(fileData);
+            // console.log(fileData);
+            fs.writeFile(
+              `./data/readJsonData.js`,
+              `module.exports = {${fileData}}`,
+              (err) => {
+                if (err) {
+                  console.error(err);
+                }
+              }
+            );
           });
         });
 
