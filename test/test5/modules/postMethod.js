@@ -35,7 +35,7 @@ const postMethod = (req, res) => {
 
       // * 입력한 데이터를 JSON 형식의 파일로 생성
       fs.writeFile(
-        path.join("./data", `${title}.json`),
+        path.join("./jsonData", `${title}.json`),
         jsonDataString,
         (err) => {
           if (err) {
@@ -49,14 +49,14 @@ const postMethod = (req, res) => {
       // * JSON 파일 parse하여 읽기
 
       let fileData = [];
-      fs.readdir("./data", (err, dir) => {
+      fs.readdir("./jsonData", (err, dir) => {
         if (err) {
           console.error(err);
           return;
         }
 
         dir.forEach((value) => {
-          fs.readFile(`./data/${value}`, (err, data) => {
+          fs.readFile(`./jsonData/${value}`, (err, data) => {
             if (err) {
               console.error(err);
             }
@@ -124,7 +124,7 @@ const postMethod = (req, res) => {
       `;
 
       // * index 다시 생성
-      fs.writeFile(path.join("./", "public", "index.html"), mainIdx, (err) => {
+      fs.writeFile(path.join("./public", "index.html"), mainIdx, (err) => {
         if (err) {
           res.writeHead(500, { "Content-Type": mimeType.text });
           res.end(errMsg[500]);
@@ -133,7 +133,7 @@ const postMethod = (req, res) => {
         console.log("index 다시 생성 !");
 
         // * index 다시 읽기
-        readFile(path.join("./", "public", "index.html"), mimeType.html, res);
+        readFile(path.join("./public", "index.html"), mimeType.html, res);
       });
     });
   } else {
