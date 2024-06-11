@@ -33,16 +33,22 @@
         "황재민",
       ];
 
-      const h1 = (tagName, textNode) => {
+      const tag = (tagName, textNode) => {
         return `<${tagName}>${textNode}</${tagName}>`;
       };
 
       const app = () => {
-        return `
-        ${h1("h1", "최유진")}
-        ${h1("p", "최유진")}
-        ${h1("h2", "최유진")}
-        `;
+        let array = [];
+
+        names.forEach((element) => {
+          if (element === "최유진") {
+            array.push(`${tag("h1", element)}`);
+          } else {
+            array.push(`${tag("h3", element)}`);
+          }
+        });
+
+        return array.join("");
       };
 
       console.log(app());
