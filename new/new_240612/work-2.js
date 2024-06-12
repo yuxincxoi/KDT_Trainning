@@ -1,1 +1,7 @@
-console.log("work-2");
+const component = () => {
+  let obj = {};
+
+  let innerFunc = () => {};
+};
+
+return `<html></html>`;
