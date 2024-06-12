@@ -1,13 +1,15 @@
-const basicData = {
-  name: "",
-  age: 0,
-  job: "",
+const basicData = () => {
+  return {
+    name: "최유진",
+    age: 20,
+    job: "개발자",
+  };
 };
 
-class BasicData {
-  constructor(name, age, job) {
-    this.name = name;
-    this.age = age;
-    this.job = job;
-  }
-}
+const component = () => {
+  let obj = basicData();
+
+  const decision = () => {};
+};
+
+return `<html></html>`;
