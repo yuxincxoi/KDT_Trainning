@@ -105,4 +105,4 @@ const postMethod = (req, res) => {
   }
 };
 
-module.exports = postMethod;
+module.exports = postMethod();

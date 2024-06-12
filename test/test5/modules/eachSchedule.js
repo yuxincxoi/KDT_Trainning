@@ -17,4 +17,4 @@ const eachSchedule = () => {
   return eachScheduleHtml;
 };
 
-module.exports = eachSchedule;
+module.exports = eachSchedule();

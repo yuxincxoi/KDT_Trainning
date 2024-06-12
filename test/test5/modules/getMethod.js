@@ -16,4 +16,4 @@ const getMethod = (req, res) => {
   }
 };
 
-module.exports = getMethod;
+module.exports = getMethod();

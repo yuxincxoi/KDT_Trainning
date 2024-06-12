@@ -14,4 +14,4 @@ const readFile = (path, contentType, res) => {
   });
 };
 
-module.exports = readFile;
+module.exports = readFile();
