@@ -13,10 +13,18 @@ const component = () => {
     }
   };
 
-  let anotherFunc = () => {};
+  let anotherFunc = () => {
+    if (obj.job === "개발자") {
+      return "오늘 야근하니 ?";
+    } else {
+      return "개발자가 최고 !";
+    }
+  };
 
   return `
   <h1>${obj.name}</h1>
   <h2>${innerFunc()}</h2>
+  <h3>${anotherFunc()}</h3>
+
   `;
 };
