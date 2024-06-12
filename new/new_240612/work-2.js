@@ -13,6 +13,8 @@ const component = () => {
     }
   };
 
+  let anotherFunc = () => {};
+
   return `
   <h1>${obj.name}</h1>
   <h2>${innerFunc()}</h2>
