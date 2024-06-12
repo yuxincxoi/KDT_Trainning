@@ -47,9 +47,10 @@ const postMethod = (req, res) => {
         }
       );
 
-      // * JSON 파일 parse하여 읽기
-
+      // * JSON 파일의 파일명을 담을 변수 fileDaga
       let fileData = [];
+
+      // * JSON 파일들을 담은 JsonData 폴더 읽기
       fs.readdir("./jsonData", (err, dir) => {
         if (err) {
           console.error(err);
@@ -57,12 +58,15 @@ const postMethod = (req, res) => {
         }
 
         dir.forEach((value) => {
+          // * 각각의 JSON 파일 읽기
           fs.readFile(`./jsonData/${value}`, (err, data) => {
             if (err) {
               console.error(err);
             }
+            // * 읽은 JSON 파일명을 fileData에 넣기
             fileData.push(`${value.replace(`.json`, "")}:${data}`);
 
+            // * 파일명을 배열로 export하는 파일 생성
             fs.writeFile(
               `./data/readDirData.js`,
               `module.exports = ${JSON.stringify(dir, null, 2)}`,
@@ -71,6 +75,7 @@ const postMethod = (req, res) => {
               }
             );
 
+            // * 읽은 JSON 파일의 data를 export하는 파일 생성
             fs.writeFile(
               `./data/readJsonData.js`,
               `module.exports = {${fileData}}`,
