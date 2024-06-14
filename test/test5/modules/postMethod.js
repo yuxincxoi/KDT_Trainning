@@ -4,6 +4,7 @@ const mimeType = require("./mimeType");
 const readFile = require("./readFile");
 const errMsg = require("./errMsg");
 const mainIdx = require("./mainIndex");
+// const eachSchedule = require("./eachSchedule");
 
 const postMethod = (req, res) => {
   if (req.url === "/submit") {
@@ -35,7 +36,7 @@ const postMethod = (req, res) => {
       const jsonDataString = JSON.stringify(jsonData, null, 2);
 
       // * 입력한 데이터를 JSON 형식의 파일로 생성
-      fs.writeFile(
+      fs.writeFileSync(
         path.join("./jsonData", `${title}.json`),
         jsonDataString,
         (err) => {
@@ -43,12 +44,14 @@ const postMethod = (req, res) => {
             console.error(err);
             return;
           }
+
           console.log("json 파일 생성");
         }
       );
 
       // * JSON 파일의 파일명을 담을 변수 fileDaga
       let fileData = [];
+      // let eachScheduleHtml = [];
 
       // * JSON 파일들을 담은 JsonData 폴더 읽기
       fs.readdir("./jsonData", (err, dir) => {
@@ -85,23 +88,92 @@ const postMethod = (req, res) => {
                 }
               }
             );
+            // eachSchedule += `
+            //   <div id="eachSchedule">
+            //   <h1>${data.title}</h1>
+            //   <p>${data.place}</p>
+            //   </div>
+            // `;
           });
         });
-
         console.log("json 데이터를 읽었다 !");
-      });
 
-      // * index 다시 생성
-      fs.writeFile(path.join("./public", "index.html"), mainIdx, (err) => {
-        if (err) {
-          res.writeHead(500, { "Content-Type": mimeType.text });
-          res.end(errMsg[500]);
-          return;
-        }
-        console.log("index 다시 생성 !");
+        //     mainIdx = `
+        //   <!DOCTYPE html>
+        //   <html lang="en">
+        //   <head>
+        //   <meta charset="UTF-8" />
+        //   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        //   <title>Document</title>
+        //   <link rel="stylesheet" href="style.css" />
+        //   </head>
+        //   <body>
+        //   <div id="root">
+        //   <div id="detail">
+        //   <div id="createBtn"></div>
+        //   <div id="scheduleContainer">
+        //   <div id="contents">
+        //   <div id="timeBox"></div>
+        //   <div id="timeLine">${eachSchedule}</div>
+        //   </div>
+        //   <form id="inputBox" action="submit" method="post">
+        //   <div>
+        //   <!-- <label for="title">일정</label> -->
+        //   <input id="title" type="text" name="title" placeholder="일정" />
+        //   </div>
+        //   <div>
+        //   <!-- <label for="time">시간</label> -->
+        //   <input id="time" type="time" name="time" placeholder="시간" />
+        //   </div>
+        //   <div>
+        //   <!-- <label for="place">장소</label> -->
+        //   <input id="place" type="text" name="place" placeholder="장소" />
+        //   </div>
+        //   <div>
+        //   <!-- <label for="memo">메모</label> -->
+        //   <input id="memo" type="text" name="memo" placeholder="메모" />
+        //   </div>
+        //   <div>
+        //   <button id="saveBtn" type="submit">Save</button>
+        //   </div>
+        //   </form>
+        //   </div>
+        //   </div>
+        //   </div>
+        //   <script src="script.js"></script>
+        //   </body>
+        //   </html>
+        // `;
 
-        // * index 다시 읽기
-        readFile(path.join("./public", "index.html"), mimeType.html, res);
+        // * index 다시 생성
+        fs.readFile(path.join("./data", "readJsonData.js"), (err, data) => {
+          if (err) console.error(err);
+          fs.writeFile(
+            path.join("./public", "index.html"),
+            mainIdx(data),
+            (err) => {
+              if (err) {
+                res.writeHead(500, { "Content-Type": mimeType.text });
+                res.end(errMsg[500]);
+                return;
+              }
+              console.log("index 다시 생성 !");
+
+              // * index 다시 읽기
+              // readFile(path.join("./public", "index.html"), mimeType.html, res);
+              fs.readFile(path.join("./public", "index.html"), (err, index) => {
+                if (err) {
+                  res.writeHead(500, { "Content-Type": mimeType.text });
+                  res.end(errMsg[500]);
+                  return;
+                }
+                res.writeHead(200, { "Content-Type": mimeType.html });
+                res.end(index);
+                console.log("index를 다시 읽었다 !");
+              });
+            }
+          );
+        });
       });
     });
   } else {
@@ -110,4 +182,4 @@ const postMethod = (req, res) => {
   }
 };
 
-module.exports = postMethod();
+module.exports = postMethod;

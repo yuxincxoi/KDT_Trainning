@@ -1,3 +1,5 @@
 module.exports = [
-  "숨쉬기.json"
+  "gkgk.json",
+  "oioi.json",
+  "pjo.json"
 ]
