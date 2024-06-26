@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const item = ["KDT", "공욱재", "미남"];
+
+    // 가상 DOM 노드 생성
+    function exampleDomFunc(tag, props, ...children) {
+      let result = {};
+
+      result.tag = tag;
+
+      if(props !== null) {
+        result.props = props;
+      } else {
+        result.props = {};
+      }
+
+      result.children = children;
+
+      return result;
+    }
+
+    // 가상 DOM 노드를 실제 DOM 노드로 변환
+    function renderExampleFunc(itemNode) {
+      if(typeof itemNode === "string") {
+        return document.createTextNode(itemNode);
+      }
+
+      const element = document.createElement(itemNode.tag);
+      const propKeys = Object.keys(itemNode.props);
+      const renderedChildren = itemNode.children.map(renderExampleFunc());
+
+      for(let i = 0; i < renderedChildren.length; i++) {
+        const child = renderedChildren[i];
+        element.appendChild(child);
+      }
+      return element;
+    }
+
+    function createExampleList(items) {
+      return exampleDomFunc(
+        "ul", 
+        null, 
+        ...items.map((item) => {
+          return exampleDomFunc("li", null, item);
+        })
+      );
+    }
+
+    const virtualDomRoot = document.getElementById("root");
+    const virtualList = createExampleList(items);
+    virtualDomRoot.appendChild(renderExampleFunc(virtualList));
+  </script>
+</body>
+</html>
