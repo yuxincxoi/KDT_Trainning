@@ -44,6 +44,7 @@
       return element;
     }
 
+    // 주어진 항목 배열을 받아 <ul> 요소와 각 항목을 포함하는 <li> 요소들의 가상 DOM 생성
     function createExampleList(items) {
       return exampleDomFunc(
         "ul", 
@@ -54,6 +55,7 @@
       );
     }
 
+    // 가상 DOM을 실제 DOM으로 변환하여 root 요소에 추가
     const virtualDomRoot = document.getElementById("root");
     const virtualList = createExampleList(items);
     virtualDomRoot.appendChild(renderExampleFunc(virtualList));
