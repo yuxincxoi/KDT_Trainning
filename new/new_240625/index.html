@@ -35,7 +35,7 @@
 
       const element = document.createElement(itemNode.tag);
       const propKeys = Object.keys(itemNode.props);
-      const renderedChildren = itemNode.children.map(renderExampleFunc());
+      const renderedChildren = itemNode.children.map(renderExampleFunc);
 
       for(let i = 0; i < renderedChildren.length; i++) {
         const child = renderedChildren[i];
