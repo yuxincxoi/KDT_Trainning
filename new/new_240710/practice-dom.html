@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const root = document.getElementById("root");
+      root.style.width = "100vw";
+      root.style.height = "100vh";
+      root.style.backgroundColor = "#fff";
+
+      const loginContainer = document.createElement("div");
+      const loginInput = document.createElement("div");
+      const loginBtn = document.createElement("div");
+
+      root.append(loginContainer);
+      loginContainer.append(loginInput, loginBtn);
+
+      loginContainer.style.width = "307px";
+      loginContainer.style.height = "340px";
+      loginContainer.style.backgroundColor = "black";
+
+      loginInput.style.width = "216px";
+      loginInput.style.height = "37px";
+      loginInput.style.backgroundColor = "#d9d9d9";
+
+      loginBtn.style.width = "64px";
+      loginBtn.style.height = "39px";
+      loginBtn.style.backgroundColor = "#09ff4e";
+    </script>
+  </body>
+</html>

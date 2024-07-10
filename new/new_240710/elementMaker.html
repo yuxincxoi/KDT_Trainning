@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    function elementMaker(tagName, styles, textContent) {
+      const element = document.createElement(tagName);
+      for (let value in styles) {
+        element.style[value] = styles[value];
+      }
+      element.textContent = textContent;
+      return element;
+    }
+
+    const loginContainerStyle = {
+      backgroundColor : "black",
+      width : "307px",
+      height : "340px"
+    };
+    const loginInputStyle = {
+      backgroundColor : "#d9d9d9",
+      width : "216px",
+      height : "37px"
+    }
+    const loginBtnStyle = {
+      backgroundColor : "#09ff4e",
+      width : "64px",
+      height : "39px"
+    }
+
+    const root = document.getElementById('root');
+    const loginContainer = elementMaker("div", loginContainerStyle,"");
+    const loginInput = elementMaker("div", loginInputStyle,"");
+    const loginBtn = elementMaker("div", loginBtnStyle,"");
+
+    root.append(loginContainer);
+    loginContainer.append(loginInput,loginBtn);
+  </script>
+</body>
+</html>
