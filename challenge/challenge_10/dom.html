@@ -9,22 +9,31 @@
     <div id="root"></div>
     <script>
       const root = document.getElementById("root");
+      const backgroundImg = document.createElement("div");
+      root.append(backgroundImg);
 
-      root.style.width = "100vw";
-      root.style.height = "100vh";
-      root.style.background =
+      root.style.margin = 0;
+      root.style.padding = 0;
+      backgroundImg.style.width = "100vw";
+      backgroundImg.style.height = "100vh";
+      backgroundImg.style.background =
         "url('https://s3-alpha-sig.figma.com/img/284a/a4b3/3854223ba1861a51428da5234a85d5aa?Expires=1721606400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lRbsgffm~kBiYsHLUoiA5J6Y9nUesIQy5fvjUzeWwEhZAxJWDS8duD2IVTb5M1zB4VxYsKkT7CPr2RSilVmIKgRUw1uYD775Dl~p70wOd68IF2HzusIVg87RoxIkJipE2~7Uj9pSa0o5cAZkgAL7UcDk-BYviXLwZvwO0vrTBa7iR5UHPIeXnV3VOMeXvG24quW~xdYQJBa763BPTpyb1eorQbgpg5gMHehQxV1BDEgtqma7Jtnb3oWKEmW88-iKuBBshEOCut3EPsAkXF2LoSkBf2e6r1XllE0FBk8HIKGLFfboBiP3MuBGPykEqUnXOmR23~J5JhdAGbK6JXGZVw__')";
-      root.style.backgroundSize = "cover";
+      backgroundImg.style.backgroundSize = "cover";
+      backgroundImg.style.backgroundPosition = "center";
 
       const card = document.createElement("div");
       const arrowDot = document.createElement("div");
       const vertical = document.createElement("div");
-      root.append(card, arrowDot, vertical);
+      backgroundImg.append(card, arrowDot, vertical);
 
-      card.style.width = "1044px";
-      card.style.height = "487px";
+      card.style.top = "270px";
+      card.style.left = "150px";
+      card.style.width = "780px";
+      card.style.height = "365px";
       card.style.borderRadius = "31px";
-      card.style.border = "solid 1px black";
+      card.style.border = "1px solid";
+      card.style.borderImageSource =
+        "linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(125, 114, 87, 0.5) 100%)";
       card.style.background =
         "linear-gradient(90deg, rgba(180, 165, 122, 0.3) 0%, rgba(214, 195, 149, 0.3) 100%)";
       card.style.boxShadow = "1px 4px 15.6px -5px #574C31";
@@ -60,23 +69,33 @@
       card.style.lineHeight = "77px";
       card.style.textAlign = "justify";
       card.style.color = "#23201a";
+      cardTitle.style.top = "20px";
+      cardTitle.style.left = "110px";
       cardTitle.style.position = "absolute";
       cardTitle.style.fontFamily = "Inter";
       cardTitle.style.fontStyle = "normal";
       cardTitle.style.fontWeight = "400";
-      cardTitle.style.fontSize = "64px";
+      cardTitle.style.fontSize = "60px";
       cardTitle.style.lineHeight = "77px";
       cardTitle.style.textAlign = "justify";
       cardTitle.style.color = "#23201a";
+      cardLine.style.top = "72px";
+      cardLine.style.left = "475px";
+      cardLine.style.width = "290px";
+      cardLine.style.height = "1px";
       cardLine.style.position = "absolute";
       cardLine.style.background =
         "linear-gradient(90deg, rgba(210, 143, 67, 0.5) 0%, rgba(80, 47, 10, 0.5) 100%)";
+      cardText.style.width = "600px";
+      cardText.style.height = "100px";
+      cardText.style.top = "120px";
+      cardText.style.left = "160px";
       cardText.style.position = "absolute";
       cardText.style.fontFamily = "Inter";
       cardText.style.fontStyle = "normal";
       cardText.style.fontWeight = "400";
-      cardText.style.fontSize = "12px";
-      cardText.style.lineHeight = "15px";
+      cardText.style.fontSize = "10px";
+      cardText.style.lineHeight = "12px";
       cardText.style.textAlign = "justify";
       cardText.style.color = "#23201a";
 
@@ -84,12 +103,16 @@
       const verticalDot = document.createElement("div");
       vertical.append(verticalLine, verticalDot);
 
-      verticalLine.style.width = "439px";
+      verticalLine.style.top = "410px";
+      verticalLine.style.left = "1120px";
+      verticalLine.style.width = "330px";
       verticalLine.style.height = "2px";
       verticalLine.style.position = "absolute";
       verticalLine.style.background =
         "linear-gradient(90deg, rgba(210,143, 67, 0.5) 0%, rgba(80, 47, 10, 0.5) 100%)";
       verticalLine.style.transform = "rotate(90deg)";
+      verticalDot.style.top = "650px";
+      verticalDot.style.left = "1280px";
       verticalDot.style.position = "absolute";
       verticalDot.style.width = "10px";
       verticalDot.style.height = "10px";
