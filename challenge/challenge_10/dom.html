@@ -21,6 +21,16 @@
       const vertical = document.createElement("div");
       root.append(card, arrowDot, vertical);
 
+      card.style.width = "1044px";
+      card.style.height = "487px";
+      card.style.borderRadius = "31px";
+      card.style.border = "solid 1px black";
+      card.style.background =
+        "linear-gradient(90deg, rgba(180, 165, 122, 0.3) 0%, rgba(214, 195, 149, 0.3) 100%)";
+      card.style.boxShadow = "1px 4px 15.6px -5px #574C31";
+      card.style.position = "absolute";
+      card.style.backdropFilter = "blur(15px)";
+
       const cardContainer = document.createElement("div");
       card.append(cardContainer);
       const cardHeader = document.createElement("div");
@@ -29,6 +39,15 @@
       const cardTitle = document.createElement("h1");
       const cardLine = document.createElement("div");
       cardHeader.append(cardTitle, cardLine);
+
+      card.style.position = "absolute";
+      card.style.fontFamily = "Inter";
+      card.style.fontStyle = "normal";
+      card.style.fontWeight = "400";
+      card.style.fontSize = "64px";
+      card.style.lineHeight = "77px";
+      card.style.textAlign = "justify";
+      card.style.color = "#23201a";
 
       const verticalLine = document.createElement("div");
       const verticalDot = document.createElement("div");
