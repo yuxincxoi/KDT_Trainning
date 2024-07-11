@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const root = document.getElementById("root");
+
+      const card = document.createElement("div");
+      const arrowDot = document.createElement("div");
+      const vertical = document.createElement("div");
+      root.append(card, arrowDot, vertical);
+
+      const cardContainer = document.createElement("div");
+      card.append(cardContainer);
+      const cardHeader = document.createElement("div");
+      const cardText = document.createElement("p");
+      cardContainer.append(cardHeader, cardText);
+      const cardTitle = document.createElement("h1");
+      const cardLine = document.createElement("div");
+      cardHeader.append(cardTitle, cardLine);
+
+      const verticalLine = document.createElement("div");
+      const verticalDot = document.createElement("div");
+      vertical.append(verticalLine, verticalDot);
+    </script>
+  </body>
+</html>
