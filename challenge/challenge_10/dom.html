@@ -21,8 +21,6 @@
       const vertical = document.createElement("div");
       root.append(card, arrowDot, vertical);
 
-      card.innerHTML = "INDENTATION";
-
       card.style.width = "1044px";
       card.style.height = "487px";
       card.style.borderRadius = "31px";
@@ -40,17 +38,6 @@
 
       vertical.style.width = "10px";
       vertical.style.height = "532px";
-      verticalLine.style.width = "439px";
-      verticalLine.style.height = "2px";
-      verticalLine.style.position = "absolute";
-      verticalLine.style.background =
-        "linear-gradient(90deg, rgba(210,143, 67, 0.5) 0%, rgba(80, 47, 10, 0.5) 100%)";
-      verticalLine.style.transform = "rotate(90deg)";
-      verticalDot.style.position = "absolute";
-      verticalDot.style.width = "10px";
-      verticalDot.style.height = "10px";
-      verticalDot.style.background = "#977240";
-      verticalDot.style.borderRadius = "5px";
 
       const cardContainer = document.createElement("div");
       card.append(cardContainer);
@@ -61,6 +48,7 @@
       const cardLine = document.createElement("div");
       cardHeader.append(cardTitle, cardLine);
 
+      cardTitle.innerHTML = "INDENTATION";
       cardText.innerHTML = "hi";
 
       card.style.position = "absolute";
@@ -94,6 +82,18 @@
       const verticalLine = document.createElement("div");
       const verticalDot = document.createElement("div");
       vertical.append(verticalLine, verticalDot);
+
+      verticalLine.style.width = "439px";
+      verticalLine.style.height = "2px";
+      verticalLine.style.position = "absolute";
+      verticalLine.style.background =
+        "linear-gradient(90deg, rgba(210,143, 67, 0.5) 0%, rgba(80, 47, 10, 0.5) 100%)";
+      verticalLine.style.transform = "rotate(90deg)";
+      verticalDot.style.position = "absolute";
+      verticalDot.style.width = "10px";
+      verticalDot.style.height = "10px";
+      verticalDot.style.background = "#977240";
+      verticalDot.style.borderRadius = "5px";
     </script>
   </body>
 </html>
