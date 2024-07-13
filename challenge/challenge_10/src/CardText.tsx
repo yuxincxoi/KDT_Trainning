@@ -1,6 +1,22 @@
+import { CSSProperties } from "react";
+
 const CardText: React.FC = () => {
+  let styles: CSSProperties = {
+    width: "600px",
+    height: "100px",
+    top: "120px",
+    left: "160px",
+    position: "absolute",
+    fontFamily: "Inter",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "10px",
+    lineHeight: "12px",
+    textAlign: "justify",
+    color: "#23201a",
+  };
   return (
-    <p>
+    <p style={styles}>
       Lorem ipsum dolor sit amet consectetur. A eu id mollis pellentesque tellus
       bibendum sagittis. Eu nunc eu sed nec nisi. Leo eget urna id congue fusce
       in venenatis sagittis id. Pretium egestas id morbi eget id commodo
