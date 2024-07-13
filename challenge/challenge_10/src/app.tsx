@@ -1,5 +1,7 @@
 import React, { CSSProperties } from "react";
 import Card from "./Card";
+import ArrowDot from "./ArrowDot";
+import Vertical from "./Vertical";
 
 const App: React.FC = () => {
   // const styleMaker = (element: HTMLElement | null, style: CSSProperties) => {
@@ -113,6 +115,8 @@ const App: React.FC = () => {
     <div id="root">
       <div id="backgroundImg">
         <Card />
+        <ArrowDot />
+        <Vertical />
       </div>
     </div>
   );
