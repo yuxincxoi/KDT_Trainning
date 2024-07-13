@@ -10,19 +10,14 @@ const App: React.FC = () => {
   //   }
   // };
 
-  // const styles: { [key: string]: CSSProperties } = {
-  //   root: {
-  //     margin: 0,
-  //     padding: 0,
-  //   },
-  //   backgroundImg: {
-  //     width: "100vw",
-  //     height: "100vh",
-  //     background:
-  //       "url('https://s3-alpha-sig.figma.com/img/284a/a4b3/3854223ba1861a51428da5234a85d5aa?Expires=1721606400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lRbsgffm~kBiYsHLUoiA5J6Y9nUesIQy5fvjUzeWwEhZAxJWDS8duD2IVTb5M1zB4VxYsKkT7CPr2RSilVmIKgRUw1uYD775Dl~p70wOd68IF2HzusIVg87RoxIkJipE2~7Uj9pSa0o5cAZkgAL7UcDk-BYviXLwZvwO0vrTBa7iR5UHPIeXnV3VOMeXvG24quW~xdYQJBa763BPTpyb1eorQbgpg5gMHehQxV1BDEgtqma7Jtnb3oWKEmW88-iKuBBshEOCut3EPsAkXF2LoSkBf2e6r1XllE0FBk8HIKGLFfboBiP3MuBGPykEqUnXOmR23~J5JhdAGbK6JXGZVw__')",
-  //     backgroundSize: "cover",
-  //     backgroundPosition: "center",
-  //   },
+  let styles = {
+    width: "100vw",
+    height: "100vh",
+    background:
+      "url('https://s3-alpha-sig.figma.com/img/284a/a4b3/3854223ba1861a51428da5234a85d5aa?Expires=1721606400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lRbsgffm~kBiYsHLUoiA5J6Y9nUesIQy5fvjUzeWwEhZAxJWDS8duD2IVTb5M1zB4VxYsKkT7CPr2RSilVmIKgRUw1uYD775Dl~p70wOd68IF2HzusIVg87RoxIkJipE2~7Uj9pSa0o5cAZkgAL7UcDk-BYviXLwZvwO0vrTBa7iR5UHPIeXnV3VOMeXvG24quW~xdYQJBa763BPTpyb1eorQbgpg5gMHehQxV1BDEgtqma7Jtnb3oWKEmW88-iKuBBshEOCut3EPsAkXF2LoSkBf2e6r1XllE0FBk8HIKGLFfboBiP3MuBGPykEqUnXOmR23~J5JhdAGbK6JXGZVw__')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
   //   card: {
   //     top: "270px",
   //     left: "150px",
@@ -112,7 +107,7 @@ const App: React.FC = () => {
   // };
 
   return (
-    <div id="backgroundImg">
+    <div id="backgroundImg" style={styles}>
       <Card />
       <ArrowDot />
       <Vertical />
