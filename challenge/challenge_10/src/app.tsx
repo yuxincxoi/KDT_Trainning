@@ -112,12 +112,10 @@ const App: React.FC = () => {
   // };
 
   return (
-    <div id="root">
-      <div id="backgroundImg">
-        <Card />
-        <ArrowDot />
-        <Vertical />
-      </div>
+    <div id="backgroundImg">
+      <Card />
+      <ArrowDot />
+      <Vertical />
     </div>
   );
 };
